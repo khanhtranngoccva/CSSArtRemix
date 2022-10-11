@@ -1,0 +1,296 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: #a6deea;
+    --unitSize: 1vmin;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+.symmetry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.transform {
+    --x: 0;
+    --y: 0;
+    --r: 0;
+    --s: 0;
+    --_scale: 1;
+    transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) skew(var(--s));
+}
+
+.flipVertical {
+    --x: 0;
+    --y: 0;
+    --r: 0;
+    --s: 0;
+    --_scale: -1;
+    transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) skew(var(--s));
+}
+
+.tracedImage {
+    position: absolute;
+    height: calc(var(--unitSize) * 73.2);
+    width: unset;
+    z-index: -1;
+    opacity: 0.5;
+    --r: 18deg;
+    --y: calc(var(--unitSize) * 3);
+    --x: calc(var(--unitSize) * 2);
+    display: none;
+}
+
+.canvas {
+    width: calc(var(--unitSize) * 80);
+    height: calc(var(--unitSize) * 80);
+    position: relative;
+    /*border: calc(var(--unitSize) * 0.1) solid;*/
+    /*opacity: 0.4;*/
+}
+
+.canvas *, .canvas *::before, .canvas *::after {
+    position: absolute;
+}
+
+.bunny {
+    --accent1: #ffe5e8;
+    --accent2: #ffcfcf;
+    --accent3: #ffe5e8;
+    --black: #2a2a2a;
+    position: relative;
+    flex-direction: column;
+}
+
+.face {
+    width: 400px;
+    aspect-ratio: 1/1;
+    border-radius: 100px;
+    background: var(--accent1);
+    position: relative;
+}
+
+.ears {
+    position: relative;
+    height: 300px;
+    /*--y: -100px;*/
+}
+
+
+.ear {
+    width: 125px;
+    height: 410px;
+    border-radius: 50%;
+    background: var(--accent3);
+    --x: -70px;
+    --y: 50px;
+    --r: -15deg;
+    transform-origin: 50% 90%;
+    animation: earFlap var(--duration) ease-in-out infinite;
+}
+
+.ear.flipVertical {
+    /*animation-delay: calc(var(--duration) / -2);*/
+}
+
+.ear::before {
+    width: 78px;
+    height: 320px;
+    border-radius: 50%;
+    background: var(--accent2);
+    content: "";
+    display: block;
+    top: 38px;
+    left: 23px;
+}
+
+@keyframes earFlap {
+    0% {
+        --r: -15deg;
+        transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(-15deg) skew(var(--s));
+    }
+
+    50% {
+        --r: -5deg;
+        transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(-15deg) skew(var(--s));;
+    }
+}
+
+.eyes {
+    width: 100px;
+    height: 150px;
+    border-radius: 999px;
+    --y: -50px;
+    --x: -60px;
+    background: white;
+    overflow: hidden;
+}
+
+.eyeCenter {
+    width: 50px;
+    height: 90px;
+    background: var(--black);
+    border-radius: 999px;
+}
+
+.eyeCenter::before {
+    content: "";
+    display: block;
+    width: 25px;
+    height: 40px;
+    border-radius: 999px;
+    background: white;
+    left: -10px;
+    top: 20px;
+}
+
+.eyelid {
+    width: 100%;
+    background: var(--accent1);
+    top: 0;
+    animation: blink calc(var(--duration) * 2) linear infinite;
+}
+
+@keyframes blink {
+    0% {
+        height: 0;
+    }
+
+    5% {
+        height: 100%;
+    }
+
+    10% {
+        height: 0;
+    }
+}
+
+/*.nose {*/
+/*    --y: 30px;*/
+/*    clip-path: polygon(-30px -2px, 30px -2px, 30px 30px, -30px 30px);*/
+/*}*/
+
+/*.noseP1 {*/
+/*    width: 30px;*/
+/*    height: 30px;*/
+/*    background: black;*/
+/*    transform: scaleY(1.3) rotate(45deg);*/
+/*    clip-path: polygon(100% 0, 100% 100%, 0 100%);*/
+/*    border-radius: 2px;*/
+/*}*/
+
+/*.noseP2 {*/
+/*    width: 41px;*/
+/*    height: 3px;*/
+/*    background: black;*/
+/*    border-radius: 4px 4px 0 0 / 100% 100% 0 0;*/
+/*    --y: -1px;*/
+/*}*/
+
+.nose {
+    width: 40px;
+    aspect-ratio: 1/1;
+    background: var(--black);
+    border-radius: 50% / 20% 20% 80% 80%;
+    --y: 70px;
+}
+
+.mouth {
+    width: 50px;
+    aspect-ratio: 2/1;
+    border-radius: 50% / 0 0 100% 100%;
+    --border: 3px;
+    border: var(--border) solid var(--black);
+    border-top: 0;
+    --x: calc(-50% + var(--border) / 2);
+    --y: 100px;
+}
+
+.whisker {
+    --x: -240px;
+    --y: 40px;
+    /* transform-origin: 100% 50%; */
+}
+
+.whiskerInner {
+    height: 3px;
+    border-radius: 9999px;
+    width: 200px;
+    background: var(--black);
+    transform-origin: 100% 50%;
+    --r: 7deg;
+}
+
+.whisker2 {
+    --y: 50px;
+}
+
+.whisker2 .whiskerInner {
+    --r: 0;
+}
+
+.whisker3 {
+    --y: 60px;
+}
+
+.whisker3 .whiskerInner {
+    --r: -7deg;
+}
+
+.bunny {
+    transform-origin: 10% 100%;
+    --amplitude: 3deg;
+    --duration: 1s;
+    animation: fidgety var(--duration) ease-in-out infinite;
+    animation-delay: -0.5s;
+}
+
+@keyframes fidgety {
+    0% {
+        transform-origin: 10% 100%;
+        transform: none;
+    }
+
+    25% {
+        transform: rotate(calc(var(--amplitude) * -1));
+    }
+
+    50% {
+        transform-origin: 10% 100%;
+        transform: none;
+    }
+
+    50.1% {
+        transform-origin: 90% 100%;
+        transform: none;
+    }
+
+    75% {
+        transform: rotate(calc(var(--amplitude)));
+    }
+
+    100% {
+        transform-origin: 90% 100%;
+        transform: none;
+    }
+}

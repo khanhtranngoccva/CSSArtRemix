@@ -1,0 +1,294 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: #a6deea;
+    --unitSize: 1vmin;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+.symmetry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.transform {
+    --x: 0;
+    --y: 0;
+    --r: 0;
+    --s: 0;
+    --_scale: 1;
+    transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) skew(var(--s));
+}
+
+.flipVertical {
+    --x: 0;
+    --y: 0;
+    --r: 0;
+    --s: 0;
+    --_scale: -1;
+    transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) skew(var(--s));
+}
+
+.tracedImage {
+    position: absolute;
+    height: calc(var(--unitSize) * 73.2);
+    width: unset;
+    z-index: -1;
+    opacity: 0.5;
+    --r: 18deg;
+    --y: calc(var(--unitSize) * 3);
+    --x: calc(var(--unitSize) * 2);
+    display: none;
+}
+
+.canvas {
+    width: calc(var(--unitSize) * 80);
+    height: calc(var(--unitSize) * 80);
+    position: relative;
+    /*border: calc(var(--unitSize) * 0.1) solid;*/
+    /*opacity: 0.4;*/
+}
+
+.canvas *, .canvas *::before, .canvas *::after {
+    position: absolute;
+}
+
+.bunny {
+    --accent1: #ffe5e8;
+    --accent2: #ffcfcf;
+    --accent3: #ffe5e8;
+    --black: #2a2a2a;
+    position: relative;
+    flex-direction: column;
+}
+
+.face {
+    width: calc(var(--unitSize) * 40);
+    aspect-ratio: 1/1;
+    border-radius: calc(var(--unitSize) * 10);
+    background: var(--accent1);
+    position: relative;
+}
+
+.ears {
+    position: relative;
+    height: calc(var(--unitSize) * 30);
+    /*--y: calc(var(--unitSize) * -10);*/
+}
+
+
+.ear {
+    width: calc(var(--unitSize) * 12.5);
+    height: calc(var(--unitSize) * 41);
+    border-radius: 50%;
+    background: var(--accent3);
+    --x: calc(var(--unitSize) * -7);
+    --y: calc(var(--unitSize) * 5);
+    --r: -15deg;
+    transform-origin: 50% 90%;
+    animation: earFlap var(--duration) ease-in-out infinite;
+}
+
+.ear.flipVertical {
+    /*animation-delay: calc(var(--duration) / -2);*/
+}
+
+.ear::before {
+    width: calc(var(--unitSize) * 7.8);
+    height: calc(var(--unitSize) * 32);
+    border-radius: 50%;
+    background: var(--accent2);
+    content: "";
+    display: block;
+    top: calc(var(--unitSize) * 3.8);
+    left: calc(var(--unitSize) * 2.3);
+}
+
+@keyframes earFlap {
+    0% {
+        transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(-15deg) skew(var(--s));
+    }
+
+    50% {
+        transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(-5deg) skew(var(--s));
+    }
+}
+
+.eyes {
+    width: calc(var(--unitSize) * 10);
+    height: calc(var(--unitSize) * 15);
+    border-radius: calc(var(--unitSize) * 99.9);
+    --y: calc(var(--unitSize) * -5);
+    --x: calc(var(--unitSize) * -6);
+    background: white;
+    overflow: hidden;
+}
+
+.eyeCenter {
+    width: calc(var(--unitSize) * 5);
+    height: calc(var(--unitSize) * 9);
+    background: var(--black);
+    border-radius: calc(var(--unitSize) * 99.9);
+}
+
+.eyeCenter::before {
+    content: "";
+    display: block;
+    width: calc(var(--unitSize) * 2.5);
+    height: calc(var(--unitSize) * 4);
+    border-radius: calc(var(--unitSize) * 99.9);
+    background: white;
+    left: calc(var(--unitSize) * -1);
+    top: calc(var(--unitSize) * 2);
+}
+
+.eyelid {
+    width: 100%;
+    background: var(--accent1);
+    top: 0;
+    animation: blink calc(var(--duration) * 2) linear infinite;
+}
+
+@keyframes blink {
+    0% {
+        height: 0;
+    }
+
+    5% {
+        height: 100%;
+    }
+
+    10% {
+        height: 0;
+    }
+}
+
+/*.nose {*/
+/*    --y: calc(var(--unitSize) * 3);*/
+/*    clip-path: polygon(calc(var(--unitSize) * -3) calc(var(--unitSize) * -0.2), calc(var(--unitSize) * 3) calc(var(--unitSize) * -0.2), calc(var(--unitSize) * 3) calc(var(--unitSize) * 3), calc(var(--unitSize) * -3) calc(var(--unitSize) * 3));*/
+/*}*/
+
+/*.noseP1 {*/
+/*    width: calc(var(--unitSize) * 3);*/
+/*    height: calc(var(--unitSize) * 3);*/
+/*    background: black;*/
+/*    transform: scaleY(1.3) rotate(45deg);*/
+/*    clip-path: polygon(100% 0, 100% 100%, 0 100%);*/
+/*    border-radius: calc(var(--unitSize) * 0.2);*/
+/*}*/
+
+/*.noseP2 {*/
+/*    width: calc(var(--unitSize) * 4.1);*/
+/*    height: calc(var(--unitSize) * 0.3);*/
+/*    background: black;*/
+/*    border-radius: calc(var(--unitSize) * 0.4) calc(var(--unitSize) * 0.4) 0 0 / 100% 100% 0 0;*/
+/*    --y: calc(var(--unitSize) * -0.1);*/
+/*}*/
+
+.nose {
+    width: calc(var(--unitSize) * 4);
+    aspect-ratio: 1/1;
+    background: var(--black);
+    border-radius: 50% / 20% 20% 80% 80%;
+    --y: calc(var(--unitSize) * 7);
+}
+
+.mouth {
+    width: calc(var(--unitSize) * 5);
+    aspect-ratio: 2/1;
+    border-radius: 50% / 0 0 100% 100%;
+    --border: calc(var(--unitSize) * 0.3);
+    border: var(--border) solid var(--black);
+    border-top: 0;
+    --x: calc(-50% + var(--border) / 2);
+    --y: calc(var(--unitSize) * 10);
+}
+
+.whisker {
+    --x: calc(var(--unitSize) * -24);
+    --y: calc(var(--unitSize) * 4);
+    /* transform-origin: 100% 50%; */
+}
+
+.whiskerInner {
+    height: calc(var(--unitSize) * 0.3);
+    border-radius: calc(var(--unitSize) * 999.9);
+    width: calc(var(--unitSize) * 20);
+    background: var(--black);
+    transform-origin: 100% 50%;
+    --r: 7deg;
+}
+
+.whisker2 {
+    --y: calc(var(--unitSize) * 5);
+}
+
+.whisker2 .whiskerInner {
+    --r: 0;
+}
+
+.whisker3 {
+    --y: calc(var(--unitSize) * 6);
+}
+
+.whisker3 .whiskerInner {
+    --r: -7deg;
+}
+
+.bunny {
+    transform-origin: 10% 100%;
+    --amplitude: 3deg;
+    --duration: 1s;
+    animation: fidgety var(--duration) ease-in-out infinite;
+    animation-delay: -0.5s;
+}
+
+@keyframes fidgety {
+    0% {
+        transform-origin: 10% 100%;
+        transform: none;
+    }
+
+    25% {
+        transform: rotate(calc(var(--amplitude) * -1));
+    }
+
+    50% {
+        transform-origin: 10% 100%;
+        transform: none;
+    }
+
+    50.1% {
+        transform-origin: 90% 100%;
+        transform: none;
+    }
+
+    75% {
+        transform: rotate(calc(var(--amplitude)));
+    }
+
+    100% {
+        transform-origin: 90% 100%;
+        transform: none;
+    }
+}
