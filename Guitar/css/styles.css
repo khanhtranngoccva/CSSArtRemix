@@ -1,0 +1,363 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: lightgoldenrodyellow;
+    --unitSize: 1vmin;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+.symmetry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.transform {
+    --x: 0;
+    --y: 0;
+    --r: 0;
+    --s: 0;
+    --_scale: 1;
+    transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) skew(var(--s));
+}
+
+.flipVertical {
+    --x: 0;
+    --y: 0;
+    --r: 0;
+    --s: 0;
+    --_scale: -1;
+    transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) skew(var(--s));
+}
+
+.tracedImage {
+    position: absolute;
+    height: calc(var(--unitSize) * 73.2);
+    width: unset;
+    z-index: -1;
+    opacity: 0.5;
+    --r: 18deg;
+    --y: calc(var(--unitSize) * 3);
+    --x: calc(var(--unitSize) * 2);
+    display: none;
+}
+
+.canvas {
+    width: calc(var(--unitSize) * 80);
+    height: calc(var(--unitSize) * 80);
+    position: relative;
+    /*border: calc(var(--unitSize) * 0.1) solid;*/
+    /*opacity: 0.4;*/
+}
+
+.canvas *, .canvas *::before, .canvas *::after {
+    position: absolute;
+}
+
+.guitar {
+    /*--accent1: #ACE5A8;*/
+    /*--accent2: #9cd099;*/
+    --accent1: #c58a6c;
+    --accent2: #734b38;
+    --brown: #854a28;
+    --darkBrown: #81573d;
+    --r: 320deg;
+}
+
+.guitarAnchor {
+    --y: 125px;
+}
+
+.lowerBase, .upperBase {
+    background: var(--accent1);
+    aspect-ratio: 1/1;
+}
+
+.base {
+    filter: drop-shadow(-2px -2px #4f4f4f) drop-shadow(-20px -15px var(--accent2)) drop-shadow(-10px 0px var(--accent2)) drop-shadow(-1px -1px #555);
+    /*filter: drop-shadow(-2px -2px #4f4f4f);*/
+}
+
+.upperBase {
+    width: 200px;
+    border-radius: 35% 35% 50% 50% / 40% 40% 70% 70% ;
+}
+
+.lowerBase {
+    width: 300px;
+    height: 275px;
+    border-radius: 30% 30% 50% 50% / 60% 60% 50% 50%;
+    --y: 180px;
+}
+
+.side {
+    width: 93px;
+    height: 29px;
+    border-radius: 50% / 100% 100% 0 0;
+    border: 20px solid var(--accent1);
+    --r: 106deg;
+    --x: -96px;
+    --y: 41px;
+    border-bottom: none;
+    border-left-width: 10px;
+    border-right-width: 10px;
+    --hClip: 84%;
+    clip-path: polygon(0% 0%, 100% 0%, 100% var(--hClip), 0% var(--hClip));
+}
+
+.center {
+    width: 82px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    /*background: #493427;*/
+    background: linear-gradient(115deg, #6A503F, black);
+    --y: 30px;
+}
+
+.center::before, .center::after {
+    width: 100px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 2px solid gray;
+    content: "";
+    display: block;
+}
+
+.center::after {
+    width: 95px;
+}
+
+.handle {
+    width: 45px;
+    height: 400px;
+    --separator: #ffffff;
+    background: repeating-linear-gradient(transparent 0, transparent 20px, var(--separator) 20px, var(--separator) 22px) var(--brown);
+    --y: -210px;
+    box-shadow: -2px 0 0 black;
+    border-radius: 3px;
+    border-top: 5px solid black;
+}
+
+.sadle {
+    width: 140px;
+    height: 20px;
+    border-radius: 3px;
+    background: var(--darkBrown);
+    --y: 150px;
+}
+
+.sadle::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100px;
+    height: 25px;
+    top: 5px;
+    border-radius: 50%;
+    background: var(--darkBrown);
+}
+
+.strings {
+    position: relative;
+    column-gap: 6px;
+    height: 570px;
+    --y: -125px;
+}
+
+.string {
+    position: relative;
+    width: 1px;
+    height: 100%;
+    background: #ffffed;
+}
+
+.string::after {
+    background: #000000;
+    aspect-ratio: 1/1;
+    width: 6px;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(50%);
+}
+
+.top {
+    --y: -500px;
+    outline: 3px solid red;
+}
+
+.topP1 {
+    width: 25px;
+    height: 125px;
+    border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+    border-right: 15px solid var(--accent1);
+    --x: -39px;
+}
+
+.topP1.transform, .topP2.transform {
+    /*box-shadow: -2px 0 var(--brown);*/
+    filter: drop-shadow(-1px 0 var(--brown)) drop-shadow(-2px 0 var(--brown));;
+}
+
+.topP2 {
+    width: 15px;
+    height: 45px;
+    border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+    border-right: 11px solid var(--accent1);
+    --x: -32px;
+    --r: -39deg;
+    --y: 74px;
+}
+
+.topP3 {
+    width: 25px;
+    height: 41px;
+    border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+    border-right: 20px solid var(--accent1);
+    --x: -26px;
+    --r: 64deg;
+    --y: -62px;
+}
+
+.topP4 {
+    width: 29px;
+    height: 14px;
+    border-radius: 0 0 50% 50% / 0 0 100% 100%;
+    border-bottom: 10px solid var(--accent1);
+    --y: -75px;
+}
+
+.topP5 {
+    width: 83px;
+    height: 126px;
+    background: var(--accent1);
+}
+
+.topP6 {
+    width: 58px;
+    height: 39px;
+    --r: -129deg;
+    --y: 65px;
+    --x: -14px;
+    background: var(--accent1);
+}
+
+.topP7 {
+    width: 33px;
+    height: 39px;
+    --y: -55px;
+    background: var(--accent1);
+}
+
+.tunerNode {
+    border-radius: 50%;
+    background: black;
+    aspect-ratio: 1/1;
+    width: 18px;
+    --x: -22px;
+    --y: -40px;
+}
+
+.tunerNode::before {
+    aspect-ratio: 1/1;
+    width: 12px;
+    border-radius: 50%;
+    border: 3px solid white;
+    content: "";
+    display: block;
+}
+
+
+.tunerNode2 {
+    --y: 5px;
+    --x: -20px;
+}
+
+.tunerNode3 {
+    --y: 50px;
+    --x: -25px;
+}
+
+.tunerString {
+    background: white;
+    aspect-ratio: 1/1;
+    width: 1px;
+    height: 136px;
+    --x: -10px;
+    --y: 28px;
+    --r: -6deg;
+}
+
+
+.tunerString2 {
+    --x: -12px;
+    --y: 73px;
+    --r: -3deg;
+}
+
+.tunerString3 {
+    --x: -15px;
+    --y: 116px;
+    --r: -4deg;
+}
+
+.tunerKnob {
+    width: 16px;
+    aspect-ratio: 0.8/1;
+    border-radius: 60% 40% 40% 60% / 50%;
+    --x: -60px;
+    background: black;
+    --y: -40px;
+    z-index: 0;
+}
+
+.tunerKnob::before {
+    z-index: -1;
+    content: "";
+    width: 25px;
+    height: 10px;
+    left: 3px;
+    background: black;
+}
+
+.tunerKnob2 {
+    --y: 5px;
+}
+
+.tunerKnob3 {
+    --y: 50px;
+    --x: -65px;
+}
+
+.circle {
+    background: white;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    height: 500px;
+}
+
+.circle2 {
+    background: #f8ffe9;
+    height: 800px;
+}
