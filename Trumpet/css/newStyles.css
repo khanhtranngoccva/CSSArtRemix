@@ -1,0 +1,267 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: lightgoldenrodyellow;
+    --unitSize: 1vmin;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+.symmetry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.transform {
+    --x: 0;
+    --y: 0;
+    --r: 0;
+    --s: 0;
+    --_scale: 1;
+    transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) skew(var(--s));
+}
+
+.flipVertical {
+    --x: 0;
+    --y: 0;
+    --r: 0;
+    --s: 0;
+    --_scale: -1;
+    transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) skew(var(--s));
+}
+
+.flipHorizontal {
+    --x: 0;
+    --y: 0;
+    --r: 0;
+    --s: 0;
+    --_scale: -1;
+    transform: scaleY(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) skew(var(--s));
+}
+
+.tracedImage {
+    position: absolute;
+    height: calc(var(--unitSize) * 73.2);
+    width: unset;
+    z-index: -1;
+    opacity: 0.5;
+    --r: 18deg;
+    --y: calc(var(--unitSize) * 3);
+    --x: calc(var(--unitSize) * 2);
+    display: none;
+}
+
+.canvas {
+    width: calc(var(--unitSize) * 80);
+    height: calc(var(--unitSize) * 80);
+    position: relative;
+    /*border: calc(var(--unitSize) * 0.1) solid;*/
+    /*opacity: 0.4;*/
+}
+
+.canvas *, .canvas *::before, .canvas *::after {
+    position: absolute;
+}
+
+.trumpet {
+    --lightGold: #ffdf42;
+    --gold: gold;
+    --slightlyDarkGold: #f6d000;
+    --darkGold: #ecc700;
+    --darkerGold: #debb00;
+}
+
+.bodyP1 {
+    width: calc(var(--unitSize) * 20);
+    height: calc(var(--unitSize) * 4);
+    --y: calc(var(--unitSize) * -4);
+    --x: calc(var(--unitSize) * 10.5);
+    background: var(--gold);
+}
+
+.bodyP3 {
+    width: calc(var(--unitSize) * 30);
+    height: calc(var(--unitSize) * 4);
+    --y: calc(var(--unitSize) * -4);
+    --x: calc(var(--unitSize) * -14);
+    border-radius: calc(var(--unitSize) * 1) 0 0 calc(var(--unitSize) * 1) / 50%;
+    background: linear-gradient(90deg, var(--lightGold), var(--gold));
+}
+
+.bodyP2 {
+    width: calc(var(--unitSize) * 40);
+    height: calc(var(--unitSize) * 12);
+    --y: calc(var(--unitSize) * 2);
+    border-radius: calc(var(--unitSize) * 5);
+    border: calc(var(--unitSize) * 2) solid var(--slightlyDarkGold);
+    border-bottom-width: calc(var(--unitSize) * 3);
+    --x: calc(var(--unitSize) * -4);
+}
+
+.bodyP4 {
+    width: calc(var(--unitSize) * 30.9);
+    height: calc(var(--unitSize) * 6.9);
+    --y: calc(var(--unitSize) * 4.5);
+    border-radius: calc(var(--unitSize) * 5);
+    border: calc(var(--unitSize) * 2) solid var(--darkGold);
+    border-bottom-width: calc(var(--unitSize) * 1);
+    --x: calc(var(--unitSize) * -4);
+}
+
+.blower {
+    border-radius: 50%;
+    background: var(--gold);
+    width: calc(var(--unitSize) * 4);
+    height: calc(var(--unitSize) * 8);
+    --x: calc(var(--unitSize) * -28.3);
+    --y: calc(var(--unitSize) * -4);
+}
+
+.valve {
+    width: calc(var(--unitSize) * 4.5);
+    height: calc(var(--unitSize) * 17);
+    --y: calc(var(--unitSize) * -0.5);
+    --x: calc(var(--unitSize) * -13.8);
+    border-radius: 50% 50% 0 0 / calc(var(--unitSize) * 1.5) calc(var(--unitSize) * 1.5) 0 0;
+}
+
+.valve::before {
+    content: "";
+    position: absolute;
+    width: calc(var(--unitSize) * 4.5);
+    height: 100%;
+    border-radius: 50% 50% 0 0 / calc(var(--unitSize) * 1.5) calc(var(--unitSize) * 1.5) 0 0;
+    background: var(--darkGold);
+    z-index: 1;
+}
+
+.valve2 {
+    --x: calc(var(--unitSize) * -9.5);
+    height: calc(var(--unitSize) * 20);
+    --y: calc(var(--unitSize) * -2);
+    --s: 0;
+}
+
+.valve2::before {
+    background: var(--darkerGold);
+}
+
+.valve3 {
+    --x: calc(var(--unitSize) * -5.1);
+}
+
+.piston {
+    width: calc(var(--unitSize) * 2);
+    height: calc(var(--unitSize) * 3);
+    background: var(--gold);
+    top: calc(var(--unitSize) * -1.2);
+    border-radius: 0 0 50% 50% / calc(var(--unitSize) * 0.5);
+    z-index: 2;
+}
+
+.piston::before {
+    width: calc(var(--unitSize) * 3.5);
+    height: calc(var(--unitSize) * 2);
+    background: var(--slightlyDarkGold);
+    border-radius: 50%;
+    content: "";
+    top: calc(var(--unitSize) * -0.5);
+    box-shadow: 0 calc(var(--unitSize) * 0.3) var(--lightGold);
+}
+
+.valve::after {
+    width: 100%;
+    height: calc(var(--unitSize) * 2.5);
+    background: var(--lightGold);
+    content: "";
+    z-index: 1;
+    border-radius: 50%;
+    top: 0;
+}
+
+.bell {
+    --x: calc(var(--unitSize) * 18.8);
+    --y: calc(var(--unitSize) * -4);
+}
+
+.bellCurve1 {
+    width: calc(var(--unitSize) * 22);
+    height: calc(var(--unitSize) * 16.7);
+    border-radius: 0 0 100% 0;
+    border: calc(var(--unitSize) * 2) solid var(--gold);
+    border-top: none;
+    border-left: none;
+    --y: calc(var(--unitSize) * -8.4);
+    clip-path: polygon(0% 0%, 100% 20%, 100% 100%, 0% 100%);
+}
+
+.bellOuter {
+    width: calc(var(--unitSize) * 10);
+    height: calc(var(--unitSize) * 32.4);
+    border-radius: 50%;
+    background: var(--slightlyDarkGold);
+    overflow: hidden;
+    border: calc(var(--unitSize) * 1.5) solid var(--gold);
+    --x: calc(var(--unitSize) * 11.3);
+}
+
+.bellFill {
+    background: var(--gold);
+    width: calc(var(--unitSize) * 6.5);
+    height: calc(var(--unitSize) * 12);
+    --x: calc(var(--unitSize) * 3.5);
+    --r: 47deg;
+
+    --y: calc(var(--unitSize) * -2);
+}
+
+.valveCluster {
+    --x: calc(var(--unitSize) * 3);
+}
+
+.bellOuter::before {
+    width: 100%;
+    height: 85%;
+    left: calc(var(--unitSize) * -3);
+    background: var(--darkGold);
+    border-radius: 50%;
+    content: "";
+}
+
+.trumpet {
+    --y: calc(var(--unitSize) * 4);
+    --x: calc(var(--unitSize) * -2);
+    --r: -30deg;
+    z-index: 1;
+}
+
+.circle {
+    background: white;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    height: calc(var(--unitSize) * 50);
+}
+
+.circle2 {
+    background: #f8ffe9;
+    height: calc(var(--unitSize) * 80);
+}
