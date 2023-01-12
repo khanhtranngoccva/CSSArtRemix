@@ -114,8 +114,8 @@
     --shade: #0001;
     --shadeBg: linear-gradient(var(--shade), var(--shade));
     --frontBackground: var(--stripes), var(--primary);
-    --leftBackground: var(--shadeBg), var(--stripes),  var(--primary);
-    --rightBackground: var(--shadeBg), var(--stripes),  var(--primary);
+    --leftBackground: var(--shadeBg), var(--stripes), var(--primary);
+    --rightBackground: var(--shadeBg), var(--stripes), var(--primary);
     --bottomBackground: var(--shadeBg), var(--shadeBg), var(--primary);
     --width: 60px;
     --height: 40px;
@@ -398,10 +398,6 @@
     background: var(--tertiary);
 }
 
-.stripes {
-    --stripes: repeating-linear-gradient(transparent 0, transparent 5px, var(--darkColor) 5px, var(--darkColor) 6px);
-}
-
 .floor {
     background: var(--stripes), #9f7c52;
 }
@@ -474,9 +470,6 @@
     background-position: 0 1px;
 }
 
-.pillar {
-
-}
 
 .block2Window {
     transform: translate3d(0, -15px, 85px);
@@ -523,7 +516,7 @@
 
 .door {
     --primary: white;
-    --secondary: brown;
+    --secondary: #b28238;
     --tertiary: #3a3a3a;
     --doorWidth: 35px;
     --doorHeight: 55px;
@@ -531,11 +524,11 @@
 }
 
 .doorFrame {
-    --shade: #0002;
+    --shade: rgba(0, 0, 0, 0.24);
     --shadeBg: linear-gradient(var(--shade), var(--shade));
     --topBackground: var(--shadeBg) var(--color);
     --frontBackground: var(--color);
-    --backBackground: var(--shadeBg), var(--shadeBg), var(--color);
+    --backBackground: var(--color);
     --leftBackground: var(--shadeBg), var(--color);
     --rightBackground: var(--shadeBg), var(--color);
     --bottomBackground: var(--shadeBg), var(--color);
@@ -561,6 +554,10 @@
     transform: translateX(calc(var(--doorWidth) / -2));
 }
 
+.doorFrame3 {
+    transform: translateY(calc(var(--doorHeight) / 2));
+}
+
 .doorFrame4 {
     transform: translateX(calc(var(--doorWidth) / 2));
 }
@@ -576,23 +573,55 @@
 }
 
 .frontDoor {
-    transform: translate3d(10px, 5px, -12.5px);
+    transform: translate3d(10px, 2.5px, -12.5px);
 }
 
 .doorBlock {
     --color: var(--secondary);
+    --width: 1px;
+    --height: calc(var(--doorHeight) - var(--doorThickness));
+    --length: calc(var(--doorWidth) - var(--doorThickness) - 2px);
+    transform-origin: calc(var(--length) / 2) 0 calc(var(--width) / 2);
+    transform: rotateY(30deg)
 }
 
 .doorBlockMain {
-    --width: calc(var(--doorThickness) - 2px);
-    --height: calc(var(--doorHeight) - var(--doorThickness) - 1px);
-    --length: calc(var(--doorWidth) - var(--doorThickness) - 1px);
-    --shade: #0002;
+    --shade: rgba(0, 0, 0, 0.13);
     --shadeBg: linear-gradient(var(--shade), var(--shade));
-    --topBackground: var(--shadeBg) var(--color);
-    --frontBackground: var(--color);
-    --backBackground: var(--shadeBg), var(--shadeBg), var(--color);
-    --leftBackground: var(--shadeBg), var(--color);
-    --rightBackground: var(--shadeBg), var(--color);
-    --bottomBackground: var(--shadeBg), var(--color);
+    --frontBackground: var(--shadeBg), var(--color);
+    --backBackground: var(--shadeBg), var(--color);
+}
+
+.doorBlock .doorFrame {
+    --doorThickness: calc(var(--width) + 4px);
+    --doorWidth: calc(var(--length) - var(--doorThickness));
+    --doorHeight: calc(var(--height) - var(--doorThickness));
+}
+
+.block1SideWindow {
+    transform: translate3d(-101px, -15px, 0) rotateY(-90deg)
+}
+
+.block1SideWindow2 {
+    transform: translate3d(-101px, 35px, -30px) rotateY(-90deg)
+}
+
+.block1RearWindow {
+    transform: translate3d(-75px, 25px, -55px) rotateY(-180deg) rotateZ(90deg)
+}
+
+.block1SideWindow2Outer {
+    --windowWidth: 23px;
+    --windowHeight: 30px;
+    --windowThickness: 3px;
+}
+
+.block1SideWindow2Inner {
+    --windowWidth: 18px;
+    --windowHeight: 26px;
+    --windowThickness: 2px;
+}
+
+.backDoor {
+    transform: translate3d(10px, 0, -96.5px) rotateY(-180deg)
 }
