@@ -1,0 +1,111 @@
+.canvas {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    perspective: 500px;
+    --offsetPerspectiveX: 0px;
+    --offsetPerspectiveY: -200px;
+    perspective-origin: calc(50% + var(--offsetPerspectiveX)) calc(50% + var(--offsetPerspectiveY));
+    overflow: hidden;
+    background: skyblue;
+}
+
+.canvas * {
+    transform-style: preserve-3d;
+}
+
+.canvas > * {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.camera {
+}
+
+@keyframes _rotateTest {
+    0% {
+        transform: rotateX(0deg);
+    }
+
+    100% {
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+}
+
+.box {
+    position: absolute;
+    /*--length: 0;*/
+    /*--height: 0;*/
+    /*--width: 0;*/
+    /*--frontBackground: red;*/
+    /*--backBackground: blue;*/
+    /*--topBackground: green;*/
+    /*--bottomBackground: yellow;*/
+    /*--leftBackground: purple;*/
+    /*--rightBackground: pink;*/
+}
+
+.boxFace {
+    position: absolute;
+}
+
+.boxFront, .boxBack {
+    width: var(--length);
+    height: var(--height);
+    left: calc(var(--length) / -2);
+    top: calc(var(--height) / -2);
+}
+
+.boxLeft, .boxRight {
+    width: var(--width);
+    height: var(--height);
+    left: calc(var(--width) / -2);
+    top: calc(var(--height) / -2);
+}
+
+.boxBottom, .boxTop {
+    width: var(--length);
+    height: var(--width);
+    left: calc(var(--length) / -2);
+    top: calc(var(--width) / -2);
+}
+
+.boxFront {
+    transform: rotateY(0deg) translateZ(calc(var(--width) / 2));
+    background: var(--frontBackground);
+}
+
+.boxBack {
+    transform: rotateY(180deg) translateZ(calc(var(--width) / 2));
+    background: var(--backBackground);
+}
+
+.boxLeft {
+    transform: rotateY(-90deg) translateZ(calc(var(--length) / 2));
+    background: var(--leftBackground);
+}
+
+.boxRight {
+    transform: rotateY(90deg) translateZ(calc(var(--length) / 2));
+    background: var(--rightBackground);
+}
+
+.boxTop {
+    transform: rotateX(90deg) translateZ(calc(var(--height) / 2));
+    background: var(--topBackground);
+}
+
+.boxBottom {
+    transform: rotateX(-90deg) translateZ(calc(var(--height) / 2));
+    background: var(--bottomBackground);
+}
+
+.plane {
+    width: var(--width);
+    height: var(--height);
+    top: calc(var(--height) / -2);
+    left: calc(var(--width) / -2);
+    background: var(--background);
+    position: absolute;
+}

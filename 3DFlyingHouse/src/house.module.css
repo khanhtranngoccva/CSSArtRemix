@@ -1,0 +1,519 @@
+.canvas {
+    background: transparent;
+    --darkColor: #0002;
+    --stripes: repeating-linear-gradient(-180deg, transparent 0, transparent 5px, var(--darkColor) 5px, var(--darkColor) 6px);
+    --sparseStripes: repeating-linear-gradient(-180deg, transparent 0, transparent 9px, var(--darkColor) 9px, var(--darkColor) 10px);
+    /*--stripes: repeating-linear-gradient(transparent 0, transparent 9px, var(--darkColor) 9px, var(--darkColor) 10px);*/
+}
+
+.house {
+    /*transform: scale3d(1.5, 1.5, 1.5);*/
+}
+
+.slope1 {
+    --frontBackground: #dafbff;
+    --backBackground: #dafbff;
+    --leftBackground: #794c2b;
+    --rightBackground: var(--sparseStripes) #e5e5e5;
+    --bottomBackground: #cce8ec;
+    --topBackground: #694225;
+    transform-origin: 0 calc(var(--height) / -2) 0;
+    --tiltAngle: 25deg;
+}
+
+.rafter {
+    --width: calc(var(--w) + 10px);
+    --height: 5px;
+    --length: 15px;
+    --primary: #704820;
+    --shade: #0001;
+    --shadeBg: linear-gradient(var(--shade), var(--shade));
+    --frontBackground: var(--primary);
+    --backBackground: var(--shadeBg) var(--primary);
+    --leftBackground: var(--shadeBg) var(--primary);
+    --rightBackground: var(--shadeBg) var(--primary);
+    --topBackground: var(--shadeBg) var(--primary);
+    --bottomBackground: var(--shadeBg), var(--shadeBg), var(--primary);
+    transform: translateY(-75px);
+}
+
+.roof2 .rafter {
+    transform: translateY(-47px);
+}
+
+.roof3 .rafter {
+    transform: translateY(-18px);
+    --width: calc(var(--w) + 5px);
+    --length: 7px;
+    --height: 4px;
+}
+
+.roof4 .rafter {
+    --width: calc(var(--w) + 5px);
+    transform: translateY(-40px);
+}
+
+.roof1 {
+    --w: 200px;
+    --width: var(--w);
+    --height: 150px;
+    --length: 10px;
+    transform: translateZ(15px);
+}
+
+.slopeVariant1 {
+    transform: rotateZ(var(--tiltAngle));
+}
+
+.slopeVariant2 {
+    transform: scaleX(-1) rotateZ(var(--tiltAngle));
+}
+
+.attic1 {
+    --width: 140px;
+    --height: 135px;
+    --length: 90px;
+    --frontBackground: #efc900;
+    --backBackground: pink;
+    transform: translateY(-5px);
+}
+
+.attic1Clip {
+    --vClip: 62.5%;
+    clip-path: polygon(50% 0%, 100% var(--vClip), 100% 100%, 0% 100%, 0% var(--vClip));
+}
+
+.roof2 {
+    --w: 200px;
+    --width: var(--w);
+    --height: 90px;
+    --length: 10px;
+    transform: translateY(43px) translateX(-70px) rotateY(-90deg);
+}
+
+.roof2 .slope1 {
+    --leftBackground: #9f6438;
+    --tiltAngle: 45deg;
+}
+
+.roof3 {
+    --w: 65px;
+    --width: var(--w);
+    --height: 35px;
+    --length: 4px;
+    transform: translate3d(-115px, 20px, 30px);
+}
+
+.roof3 .slope1 {
+
+    --leftBackground: #794c2b;
+    --tiltAngle: 45deg;
+}
+
+.attic2 {
+    --primary: #f3d09a;
+    --shade: #0001;
+    --shadeBg: linear-gradient(var(--shade), var(--shade));
+    --frontBackground: var(--stripes), var(--primary);
+    --leftBackground: var(--shadeBg), var(--stripes),  var(--primary);
+    --rightBackground: var(--shadeBg), var(--stripes),  var(--primary);
+    --bottomBackground: var(--shadeBg), var(--shadeBg), var(--primary);
+    --width: 60px;
+    --height: 40px;
+    --length: 40px;
+    transform: translateY(5px);
+}
+
+.attic2Front {
+    --vClip: 50%;
+    clip-path: polygon(50% 0%, 100% var(--vClip), 100% 100%, 0% 100%, 0% var(--vClip));
+}
+
+.attic2Side {
+    --vClip: 50%;
+    clip-path: polygon(100% var(--vClip), 100% 100%, 0% 100%, 0% var(--vClip));
+}
+
+.roof4 {
+    --w: 100px;
+    --width: var(--w);
+    --height: 80px;
+    --length: 8px;
+    transform: translate3d(40px, -10px, 0px) rotateY(90deg);
+}
+
+.roof4 .slope1 {
+
+    --tiltAngle: 30deg;
+    --leftBackground: #9f6438;
+}
+
+.block1 {
+    transform: translate3d(-60px, 70px, 0);
+}
+
+.block1Main {
+    --width: 110px;
+    --height: 140px;
+    --length: 200px;
+    --leftBackground: var(--stripes), #ffd89f;
+    --frontBackground: var(--stripes), skyblue;
+    --backBackground: var(--stripes), skyblue;
+}
+
+.block1MainLeft {
+    --vClip: 40%;
+    --vClip2: 55%;
+    clip-path: polygon(50% 0, 100% var(--vClip), 100% var(--vClip2), 75% var(--vClip2), 75% 100%, 0% 100%, 0% var(--vClip));
+}
+
+.block1MainFront {
+    --vClip: 40%;
+    --vClip2: 55%;
+    clip-path: polygon(100% var(--vClip), 100% var(--vClip2), 0% var(--vClip2), 0% var(--vClip));
+}
+
+.block1MainBack {
+    --vClip: 40%;
+    --vClip2: 100%;
+    clip-path: polygon(100% var(--vClip), 100% var(--vClip2), 0% var(--vClip2), 0% var(--vClip));
+}
+
+
+.block2MainRight {
+    --vClip: 32%;
+    clip-path: polygon(50% 0, 100% var(--vClip), 100% 100%, 0% 100%, 0% var(--vClip));
+    background-position: 0 -2px;
+}
+
+.block2MainFront {
+    --vClip: 30%;
+    --vClip2: 100%;
+    clip-path: polygon(100% var(--vClip), 100% var(--vClip2), 0% var(--vClip2), 0% var(--vClip));
+    background-position: 0 -2px;
+}
+
+.block2MainBack {
+    --vClip: 30%;
+    --vClip2: 100%;
+    clip-path: polygon(100% var(--vClip), 100% var(--vClip2), 0% var(--vClip2), 0% var(--vClip));
+    background-position: 0 -2px;
+}
+
+.block2 {
+    transform: translate3d(45px, 45px, 0);
+}
+
+.block2Main {
+    --width: 70px;
+    --height: 190px;
+    --length: 75px;
+    --primary: pink;
+    --shade: #0001;
+    --shadeBg: linear-gradient(var(--shade), var(--shade));
+    --rightBackground: var(--stripes), var(--primary);
+    --backBackground: var(--shadeBg), var(--stripes), var(--primary);
+    --frontBackground: var(--shadeBg), var(--stripes), var(--primary);
+}
+
+.block3Main {
+    --width: 170px;
+    /*--width: 200px;*/
+    --height: 210px;
+    --length: 120px;
+    --primary: #ffc5d0;
+    --secondary: #ffdd00;
+    --shade: rgba(0, 0, 0, 0.06);
+    --shadeBg: linear-gradient(var(--shade), var(--shade));
+    --rightBackground: var(--shadeBg), var(--stripes) var(--primary);
+    --leftBackground: var(--shadeBg), var(--stripes), #855c29;
+    --backBackground: var(--stripes), var(--primary);
+    --frontBackground: var(--secondary);
+}
+
+.block3 {
+    transform: translate3d(0, 35px, 5px);
+}
+
+.block3MainFront {
+    --vClip: 60%;
+    --vClip2: 70%;
+    clip-path: polygon(50% 0, 100% var(--vClip), 100% var(--vClip2), 0% var(--vClip2), 0% var(--vClip));
+    background: radial-gradient(circle at 50% 0, #ffee8e 0%, #ffee8e 60%, #968a46 65%, #ffee8e 70%);
+    background-size: 12px 7px;
+
+}
+
+.block3MainBack {
+    --vClip: 60%;
+    background-position: 0 -2px;
+    clip-path: polygon(50% 0, 100% var(--vClip), 100% 100%, 0% 100%, 0% var(--vClip));
+}
+
+.block3MainLeft {
+    --vClip: 60%;
+    --vClip2: 100%;
+    --vClip3: 70%;
+    --hClip: 80%;
+    background-position: 0 -2px;
+    clip-path: polygon(100% var(--vClip), 100% var(--vClip3), var(--hClip) var(--vClip3), var(--hClip) var(--vClip2), 0% var(--vClip2), 0% var(--vClip));
+}
+
+.block3MainRight {
+    --vClip: 60%;
+    --vClip2: 100%;
+    --vClip3: 70%;
+    --hClip: 20%;
+    clip-path: polygon(var(--hClip) var(--vClip), var(--hClip) var(--vClip2), 100% var(--vClip2), 100% var(--vClip), 0 var(--vClip), 0 var(--vClip3), var(--hClip) var(--vClip3));
+}
+
+.hexagonCorner {
+    transform: translate3d(0, 77.5px, 65px);
+    --darkColor: #0003;
+    --primary: var(--stripes) #beff60;
+    --shade: rgba(0, 0, 0, 0.03);
+    --shadeBg: linear-gradient(var(--shade), var(--shade));
+}
+
+.wall1Inner {
+    --height: 55px;
+    --background: var(--shadeBg), var(--primary);
+}
+
+.wall1, .wall2, .wall3 {
+    --width: 49px;
+    --w: var(--width);
+}
+
+.wall1 {
+    transform: translate3d(0, 0, 15px);
+}
+
+.wall1 .wall1Inner {
+    --background: var(--primary);
+}
+
+.wall2 {
+    --width: 46px;
+    transform: translate3d(42px, 0, 0) rotateY(40deg);
+}
+
+.wall3 {
+    --width: 46px;
+    transform: translate3d(-42px, 0, 0) rotateY(-40deg);
+}
+
+.block4 {
+    --length: 130px;
+    --width: 40px;
+    --height: 10px;
+    --primary: #bb6e40;
+    --shade: #0001;
+    --shadeBg: linear-gradient(var(--shade), var(--shade));
+    --topBackground: var(--primary);
+    --frontBackground: var(--shadeBg) var(--primary);
+    --backBackground: var(--shadeBg), var(--shadeBg), var(--primary);
+    --leftBackground: var(--shadeBg), var(--shadeBg), var(--primary);
+    --rightBackground: var(--shadeBg), var(--shadeBg), var(--primary);
+    --bottomBackground: var(--shadeBg), var(--shadeBg), var(--primary);
+    transform: translate3d(0, 82px, 75px);
+}
+
+.wall1Base {
+    --length: var(--w);
+    --height: 15px;
+    --width: 10px;
+    --primary: #FEFDD2;
+    --darkColor: #816543;
+    --secondary: #9f7c52;
+    --verticalBg: var(--primary) 0, var(--primary) 2.75px, transparent 2.75px, transparent 24.75px, var(--primary) 24.75px, var(--primary) 27.5px;
+    --bg: repeating-linear-gradient(90deg, var(--verticalBg)), linear-gradient(var(--primary) 15%, transparent 15%, transparent 85%, var(--primary) 85%), var(--secondary);
+    --shade: #0001;
+    --shadeBg: linear-gradient(var(--shade), var(--shade));
+    --frontBackground: var(--shadeBg), var(--bg);
+    transform: translate3d(0, 35px, -5px);
+}
+
+.window {
+    --primary: white;
+    --secondary: pink;
+    --tertiary: #3d3d3d;
+}
+
+.windowFrame {
+    --shade: #0002;
+    --shadeBg: linear-gradient(var(--shade), var(--shade));
+    --topBackground: var(--shadeBg) var(--color);
+    --frontBackground: var(--color);
+    --backBackground: var(--shadeBg), var(--shadeBg), var(--color);
+    --leftBackground: var(--shadeBg), var(--color);
+    --rightBackground: var(--shadeBg), var(--color);
+    --bottomBackground: var(--shadeBg), var(--color);
+}
+
+.windowFrameOuter {
+    --windowWidth: 30px;
+    --windowHeight: 35px;
+    --windowThickness: 4px;
+    --color: var(--primary);
+}
+
+.windowFrameInner {
+    --windowWidth: 25px;
+    --windowHeight: 30px;
+    --windowThickness: 2px;
+    --color: var(--secondary);
+}
+
+.windowFrameHorizontal {
+    --length: calc(var(--windowWidth) + var(--windowThickness));
+    --height: var(--windowThickness);
+    --width: var(--windowThickness);
+}
+
+.windowFrameVertical {
+    --height: calc(var(--windowHeight) + var(--windowThickness));
+    --length: var(--windowThickness);
+    --width: var(--windowThickness);
+}
+
+.windowFrame1 {
+    transform: translateY(calc(var(--windowHeight) / -2));
+}
+
+.windowFrame3 {
+    transform: translateY(calc(var(--windowHeight) / 2));
+}
+
+.windowFrame2 {
+    transform: translateX(calc(var(--windowWidth) / -2));
+}
+
+.windowFrame4 {
+    transform: translateX(calc(var(--windowWidth) / 2));
+}
+
+.windowPane {
+    --height: var(--windowHeight);
+    --width: var(--windowWidth);
+    background: var(--tertiary);
+}
+
+.stripes {
+    --stripes: repeating-linear-gradient(transparent 0, transparent 5px, var(--darkColor) 5px, var(--darkColor) 6px);
+}
+
+.floor {
+    background: var(--stripes), #9f7c52;
+}
+
+.foundation1 {
+    --shade: #0001;
+    --shadeBg: linear-gradient(var(--shade), var(--shade));
+    --frontBackground: var(--bg);
+    --backBackground: var(--shadeBg), var(--bg2);
+    --leftBackground: var(--shadeBg), var(--bg);
+    --rightBackground: var(--shadeBg), var(--primary);
+    --bottomBackground: var(--shadeBg), var(--shadeBg), var(--primary);
+    --width: 110px;
+    --height: 15px;
+    --length: 200px;
+    transform: translateY(77.5px);
+}
+
+.foundation2 {
+    --shade: #0001;
+    --shadeBg: linear-gradient(var(--shade), var(--shade));
+    --frontBackground: var(--bg);
+    --backBackground: var(--shadeBg), var(--bg2);
+    --rightBackground: var(--shadeBg), var(--bg);
+    --bottomBackground: var(--shadeBg), var(--shadeBg), var(--primary);
+    --width: 70px;
+    --height: 15px;
+    --length: 75px;
+    transform: translateY(102.5px);
+}
+
+.foundation3 {
+    --frontBackground: var(--bg);
+    --backBackground: var(--shadeBg), var(--bg2);
+    --leftBackground: var(--shadeBg), var(--bg2);
+    --rightBackground: var(--shadeBg), var(--bg);
+    --bottomBackground: var(--shadeBg), var(--shadeBg), var(--primary);
+    --width: 135px;
+    --height: 15px;
+    --length: 120px;
+    transform: translate3d(0, 112.5px, -17.5px);
+}
+
+.foundation {
+    --primary: #FEFDD2;
+    --darkColor: #816543;
+    --secondary: #9f7c52;
+    --verticalBg: var(--primary) 0, var(--primary) 2.75px, transparent 2.75px, transparent 24.75px, var(--primary) 24.75px, var(--primary) 27.5px;
+    --bg: repeating-linear-gradient(90deg, var(--verticalBg)), linear-gradient(var(--primary) 15%, transparent 15%, transparent 85%, var(--primary) 85%), var(--secondary);
+    --bg2: repeating-linear-gradient(-90deg, var(--verticalBg)), linear-gradient(var(--primary) 15%, transparent 15%, transparent 85%, var(--primary) 85%), var(--secondary);
+    --shade: #0001;
+    --shadeBg: linear-gradient(var(--shade), var(--shade));
+}
+
+.frontArea {
+    transform: translate3d(-40px, 42px, 41.25px);
+}
+
+.frontWallAndCeiling {
+    --width: 27.5px;
+    --height: 70px;
+    --length: 120px;
+    --backBackground: var(--stripes), #855c29;
+    --shade: #0001;
+    --shadeBg: linear-gradient(var(--shade), var(--shade));
+    --topBackground: var(--shadeBg), var(--stripes), skyblue;
+}
+
+.frontWall {
+    background-position: 0 1px;
+}
+
+.pillar {
+
+}
+
+.block2Window {
+    transform: translate3d(0, -15px, 85px);
+}
+
+.block2WindowOuter {
+    --windowWidth: 35px;
+    --windowHeight: 55px;
+}
+
+.block2WindowInner {
+    --windowWidth: 30px;
+    --windowHeight: 50px;
+}
+
+.block3Window {
+    transform: translate3d(0, 8.5px, 30px);
+}
+
+.block3WindowOuter {
+    --windowWidth: 17.5px;
+    --windowHeight: 22.5px;
+    --windowThickness: 2px;
+}
+
+.block3WindowInner {
+    --windowWidth: 15px;
+    --windowHeight: 20px;
+    --windowThickness: 2px;
+}
+
+.frontWindow {
+    transform: translate3d(-32.5px, -5px, -12.5px);
+}
+
+.frontWindowOuter {
+    --windowWidth: 30px;
+    --windowHeight: 35px;
+}

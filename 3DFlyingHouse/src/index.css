@@ -1,0 +1,16 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background: #8a8a8a;
+    overflow: hidden;
+    margin: 0;
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+}
