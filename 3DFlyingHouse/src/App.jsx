@@ -78,9 +78,9 @@ function App() {
                              classNames={{
                                  front: classes.attic2Front, left: classes.attic2Side, right: classes.attic2Side
                              }}></ReusableBox>
-                <Window className={classes.block3Window} classNames={{
-                    outer: classes.block3WindowOuter,
-                    inner: classes.block3WindowInner,
+                <Window className={classes.atticWindow} classNames={{
+                    outer: classes.atticWindowOuter,
+                    inner: classes.atticWindowInner,
                 }}></Window>
             </TransformGroup>
             <TransformGroup className={classJoin([classes.roof4])}>
@@ -123,6 +123,10 @@ function App() {
                                  front: classes.block2MainFront,
                                  back: classes.block2MainBack
                              }}></ReusableBox>
+                <Window className={classes.block2Window} classNames={{
+                    outer: classes.block2WindowOuter,
+                    inner: classes.block2WindowInner,
+                }}></Window>
                 <ReusableBox className={`${classes.foundation2} ${classes.foundation}`}></ReusableBox>
             </TransformGroup>
             <TransformGroup className={classes.block3}>
@@ -133,9 +137,13 @@ function App() {
                                  back: classes.block3MainBack,
                                  front: classes.block3MainFront,
                              }}></ReusableBox>
-                <Window className={classes.block2Window} classNames={{
-                    outer: classes.block2WindowOuter,
-                    inner: classes.block2WindowInner,
+                <Window className={classes.block3Window} classNames={{
+                    outer: classes.block3WindowOuter,
+                    inner: classes.block3WindowInner,
+                }}></Window>
+                <Window className={classes.block3RearWindow} classNames={{
+                    outer: classes.block3RearWindowOuter,
+                    inner: classes.block3RearWindowInner,
                 }}></Window>
                 <ReusableBox className={`${classes.foundation3} ${classes.foundation}`}></ReusableBox>
                 <TransformGroup className={`${classes.hexagonCorner} ${classes.stripes}`}>

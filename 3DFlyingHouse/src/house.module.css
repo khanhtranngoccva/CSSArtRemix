@@ -470,32 +470,61 @@
     background-position: 0 1px;
 }
 
-
 .block2Window {
-    transform: translate3d(0, -15px, 85px);
+    transform: translate3d(40px, -20px, 0) rotateY(90deg);
 }
 
 .block2WindowOuter {
+    --windowHeight: 50px;
+    --windowWidth: 35px;
+}
+
+
+.block2WindowInner {
+    --windowHeight: 45px;
+    --windowWidth: 30px;
+}
+
+
+.block3Window {
+    transform: translate3d(0, -15px, 85px);
+}
+
+.block3WindowOuter {
     --windowWidth: 35px;
     --windowHeight: 55px;
 }
 
-.block2WindowInner {
+.block3WindowInner {
     --windowWidth: 30px;
     --windowHeight: 50px;
 }
 
-.block3Window {
+.atticWindow {
     transform: translate3d(0, 8.5px, 30px);
 }
 
-.block3WindowOuter {
+.block3RearWindow {
+    transform: translate3d(0, -35px, -85px) rotateY(180deg);
+}
+
+.block3RearWindowOuter {
+    --windowWidth: 25px;
+    --windowHeight: 40px;
+}
+
+.block3RearWindowInner {
+    --windowWidth: 20px;
+    --windowHeight: 35px;
+}
+
+.atticWindowOuter {
     --windowWidth: 17.5px;
     --windowHeight: 22.5px;
     --windowThickness: 2px;
 }
 
-.block3WindowInner {
+.atticWindowInner {
     --windowWidth: 15px;
     --windowHeight: 20px;
     --windowThickness: 2px;
