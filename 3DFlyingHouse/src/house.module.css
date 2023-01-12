@@ -525,6 +525,9 @@
     --primary: white;
     --secondary: brown;
     --tertiary: #3a3a3a;
+    --doorWidth: 35px;
+    --doorHeight: 55px;
+    --doorThickness: 4px;
 }
 
 .doorFrame {
@@ -563,9 +566,6 @@
 }
 
 .doorFrameOuter {
-    --doorWidth: 35px;
-    --doorHeight: 55px;
-    --doorThickness: 4px;
     --color: var(--primary);
 }
 
@@ -577,4 +577,22 @@
 
 .frontDoor {
     transform: translate3d(10px, 5px, -12.5px);
+}
+
+.doorBlock {
+    --color: var(--secondary);
+}
+
+.doorBlockMain {
+    --width: calc(var(--doorThickness) - 2px);
+    --height: calc(var(--doorHeight) - var(--doorThickness) - 1px);
+    --length: calc(var(--doorWidth) - var(--doorThickness) - 1px);
+    --shade: #0002;
+    --shadeBg: linear-gradient(var(--shade), var(--shade));
+    --topBackground: var(--shadeBg) var(--color);
+    --frontBackground: var(--color);
+    --backBackground: var(--shadeBg), var(--shadeBg), var(--color);
+    --leftBackground: var(--shadeBg), var(--color);
+    --rightBackground: var(--shadeBg), var(--color);
+    --bottomBackground: var(--shadeBg), var(--color);
 }

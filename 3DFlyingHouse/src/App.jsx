@@ -42,6 +42,9 @@ function Door(props) {
             <ReusableBox className={classJoin([classes.doorFrameVertical, classes.doorFrame4])}></ReusableBox>
             <Plane className={classes.doorSpace}></Plane>
         </TransformGroup>
+        <TransformGroup className={classes.doorBlock}>
+            <ReusableBox className={`${classes.doorBlockMain}`}></ReusableBox>
+        </TransformGroup>
     </TransformGroup>
 }
 
