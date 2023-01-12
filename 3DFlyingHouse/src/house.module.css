@@ -105,7 +105,6 @@
 }
 
 .roof3 .slope1 {
-
     --leftBackground: #794c2b;
     --tiltAngle: 45deg;
 }
@@ -516,4 +515,66 @@
 .frontWindowOuter {
     --windowWidth: 30px;
     --windowHeight: 35px;
+}
+
+.frontDoor {
+    --windowWidth: 30px;
+}
+
+.door {
+    --primary: white;
+    --secondary: brown;
+    --tertiary: #3a3a3a;
+}
+
+.doorFrame {
+    --shade: #0002;
+    --shadeBg: linear-gradient(var(--shade), var(--shade));
+    --topBackground: var(--shadeBg) var(--color);
+    --frontBackground: var(--color);
+    --backBackground: var(--shadeBg), var(--shadeBg), var(--color);
+    --leftBackground: var(--shadeBg), var(--color);
+    --rightBackground: var(--shadeBg), var(--color);
+    --bottomBackground: var(--shadeBg), var(--color);
+}
+
+.doorFrameHorizontal {
+    --length: calc(var(--doorWidth) + var(--doorThickness));
+    --width: var(--doorThickness);
+    --height: var(--doorThickness);
+}
+
+.doorFrameVertical {
+    --height: calc(var(--doorHeight) + var(--doorThickness));
+    --width: var(--doorThickness);
+    --length: var(--doorThickness);
+}
+
+.doorFrame1 {
+    transform: translateY(calc(var(--doorHeight) / -2));
+}
+
+.doorFrame2 {
+    transform: translateX(calc(var(--doorWidth) / -2));
+}
+
+.doorFrame4 {
+    transform: translateX(calc(var(--doorWidth) / 2));
+}
+
+.doorFrameOuter {
+    --doorWidth: 35px;
+    --doorHeight: 55px;
+    --doorThickness: 4px;
+    --color: var(--primary);
+}
+
+.doorSpace {
+    --width: var(--doorWidth);
+    --height: var(--doorHeight);
+    --background: var(--tertiary);
+}
+
+.frontDoor {
+    transform: translate3d(10px, 5px, -12.5px);
 }

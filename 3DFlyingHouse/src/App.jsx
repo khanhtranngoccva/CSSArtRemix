@@ -34,22 +34,13 @@ function Window(props) {
 }
 
 function Door(props) {
-    return <TransformGroup className={`${classes.window} ${props.className || ""}`}>
+    return <TransformGroup className={`${classes.door} ${props.className || ""}`}>
         <TransformGroup
-            className={`${classes.windowFrame} ${classes.windowFrameInner} ${props.classNames?.inner || ""}`}>
-            <ReusableBox className={classJoin([classes.windowFrameHorizontal, classes.windowFrame1])}></ReusableBox>
-            <ReusableBox className={classJoin([classes.windowFrameVertical, classes.windowFrame2])}></ReusableBox>
-            <ReusableBox className={classJoin([classes.windowFrameHorizontal, classes.windowFrame3])}></ReusableBox>
-            <ReusableBox className={classJoin([classes.windowFrameVertical, classes.windowFrame4])}></ReusableBox>
-            <ReusableBox className={classJoin([classes.windowFrameHorizontal])}></ReusableBox>
-        </TransformGroup>
-        <TransformGroup
-            className={`${classes.windowFrame} ${classes.windowFrameOuter} ${props.classNames?.outer}`}>
-            <ReusableBox className={classJoin([classes.windowFrameHorizontal, classes.windowFrame1])}></ReusableBox>
-            <ReusableBox className={classJoin([classes.windowFrameVertical, classes.windowFrame2])}></ReusableBox>
-            <ReusableBox className={classJoin([classes.windowFrameHorizontal, classes.windowFrame3])}></ReusableBox>
-            <ReusableBox className={classJoin([classes.windowFrameVertical, classes.windowFrame4])}></ReusableBox>
-            <Plane className={classes.windowPane}></Plane>
+            className={`${classes.doorFrame} ${classes.doorFrameOuter} ${props.classNames?.inner || ""}`}>
+            <ReusableBox className={classJoin([classes.doorFrameHorizontal, classes.doorFrame1])}></ReusableBox>
+            <ReusableBox className={classJoin([classes.doorFrameVertical, classes.doorFrame2])}></ReusableBox>
+            <ReusableBox className={classJoin([classes.doorFrameVertical, classes.doorFrame4])}></ReusableBox>
+            <Plane className={classes.doorSpace}></Plane>
         </TransformGroup>
     </TransformGroup>
 }
@@ -64,7 +55,6 @@ function App() {
             </TransformGroup>
             <TransformGroup className={classJoin([classes.roof2])}>
                 <ReusableBox className={classJoin([classes.rafter])}></ReusableBox>
-
                 <ReusableBox className={classJoin([classes.slope1, classes.slopeVariant1])}></ReusableBox>
                 <ReusableBox className={classJoin([classes.slope1, classes.slopeVariant2])}></ReusableBox>
             </TransformGroup>
@@ -101,6 +91,7 @@ function App() {
                         outer: classes.frontWindowOuter,
                         inner: classes.frontWindowInner,
                     }}></Window>
+                    <Door className={classes.frontDoor}></Door>
                 </TransformGroup>
                 <ReusableBox className={`${classes.foundation1} ${classes.foundation}`}
                              classNames={{top: `${classes.stripes} ${classes.floor}`}}></ReusableBox>
