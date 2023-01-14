@@ -13,6 +13,7 @@ function classJoin(classes) {
 }
 
 function Window(props) {
+    const middleBar = props.middleBar ?? true;
     return <TransformGroup className={`${classes.window} ${props.className || ""}`}>
         <TransformGroup
             className={`${classes.windowFrame} ${classes.windowFrameInner} ${props.classNames?.inner || ""}`}>
@@ -20,7 +21,7 @@ function Window(props) {
             <ReusableBox className={classJoin([classes.windowFrameVertical, classes.windowFrame2])}></ReusableBox>
             <ReusableBox className={classJoin([classes.windowFrameHorizontal, classes.windowFrame3])}></ReusableBox>
             <ReusableBox className={classJoin([classes.windowFrameVertical, classes.windowFrame4])}></ReusableBox>
-            <ReusableBox className={classJoin([classes.windowFrameHorizontal])}></ReusableBox>
+            {middleBar ? <ReusableBox className={classJoin([classes.windowFrameHorizontal])}></ReusableBox> : null}
         </TransformGroup>
         <TransformGroup
             className={`${classes.windowFrame} ${classes.windowFrameOuter} ${props.classNames?.outer || ""}`}>
@@ -97,10 +98,10 @@ function App() {
                              }}></ReusableBox>
                 <Window className={classes.block1SideWindow}></Window>
                 <Window className={classes.block1SideWindow2}
-                    classNames={{
-                        outer: classes.block1SideWindow2Outer,
-                        inner: classes.block1SideWindow2Inner
-                    }}></Window>
+                        classNames={{
+                            outer: classes.block1SideWindow2Outer,
+                            inner: classes.block1SideWindow2Inner
+                        }}></Window>
                 <Window className={classes.block1RearWindow}></Window>
 
                 <TransformGroup className={classes.frontArea}>
@@ -112,6 +113,35 @@ function App() {
                     }}></Window>
                     <Door className={classes.frontDoor}></Door>
                     <Door className={classes.backDoor}></Door>
+                    <ReusableBox className={`${classes.pillar} ${classes.pillar1}`}></ReusableBox>
+                    <ReusableBox className={`${classes.pillar} ${classes.pillar2}`}></ReusableBox>
+                    <ReusableBox className={`${classes.pillar} ${classes.pillar3}`}></ReusableBox>
+                    <ReusableBox className={`${classes.rail} ${classes.sideRail} ${classes.rail1}`}></ReusableBox>
+                    <ReusableBox className={`${classes.rail} ${classes.sideRail} ${classes.rail2}`}></ReusableBox>
+                    <ReusableBox className={`${classes.rail} ${classes.sideRail} ${classes.rail3}`}></ReusableBox>
+                    <ReusableBox className={`${classes.rail} ${classes.sideRail} ${classes.rail7}`}></ReusableBox>
+                    <ReusableBox className={`${classes.rail} ${classes.frontRail} ${classes.rail4}`}></ReusableBox>
+                    <ReusableBox className={`${classes.rail} ${classes.frontRail} ${classes.rail5}`}></ReusableBox>
+                    <ReusableBox className={`${classes.rail} ${classes.frontRail} ${classes.rail6}`}></ReusableBox>
+                    <ReusableBox className={`${classes.rail} ${classes.frontRail} ${classes.rail8}`}></ReusableBox>
+                    <ReusableBox className={`${classes.rail} ${classes.sideRail} ${classes.rail9}`}></ReusableBox>
+
+                    {Array.from({length: 27}, (_, i) => {
+                        return <ReusableBox className={`${classes.railBar} ${classes[`bar${i + 1}`]}`}></ReusableBox>
+                    })}
+                    {Array.from({length: 17}, (_, i) => {
+                        return <ReusableBox className={`${classes.railBar} ${classes.longBar} ${classes[`bar${i + 28}`]}`}></ReusableBox>
+                    })}
+                    <TransformGroup className={`${classes.frontStairCase}`}>
+                        <ReusableBox className={`${classes.stairCase} ${classes.stairCase1}`}></ReusableBox>
+                        <ReusableBox className={`${classes.stairCase} ${classes.stairCase2}`}></ReusableBox>
+                        <ReusableBox className={`${classes.stairCase} ${classes.stairCase3}`}></ReusableBox>
+                    </TransformGroup>
+                    <TransformGroup className={`${classes.backStairCase}`}>
+                        <ReusableBox className={`${classes.stairCase} ${classes.stairCase1}`}></ReusableBox>
+                        <ReusableBox className={`${classes.stairCase} ${classes.stairCase2}`}></ReusableBox>
+                        <ReusableBox className={`${classes.stairCase} ${classes.stairCase3}`}></ReusableBox>
+                    </TransformGroup>
                 </TransformGroup>
                 <ReusableBox className={`${classes.foundation1} ${classes.foundation}`}
                              classNames={{top: `${classes.stripes} ${classes.floor}`}}></ReusableBox>
@@ -123,10 +153,24 @@ function App() {
                                  front: classes.block2MainFront,
                                  back: classes.block2MainBack
                              }}></ReusableBox>
+                <ReusableBox className={classes.block2Mid}></ReusableBox>
+                <ReusableBox className={classes.block2Lower}></ReusableBox>
                 <Window className={classes.block2Window} classNames={{
                     outer: classes.block2WindowOuter,
                     inner: classes.block2WindowInner,
                 }}></Window>
+                <Window className={classes.block2WindowLower} classNames={{
+                    outer: classes.block2WindowOuter,
+                    inner: classes.block2WindowInner,
+                }}></Window>
+                <Window className={classes.block2WindowRight} classNames={{
+                    outer: classes.block2WindowRightOuter,
+                    inner: classes.block2WindowRightInner,
+                }}></Window>
+                <Window className={classes.block2WindowLeft} classNames={{
+                    outer: classes.block2WindowLeftOuter,
+                    inner: classes.block2WindowLeftInner,
+                }} middleBar={false}></Window>
                 <ReusableBox className={`${classes.foundation2} ${classes.foundation}`}></ReusableBox>
             </TransformGroup>
             <TransformGroup className={classes.block3}>
@@ -165,7 +209,12 @@ function App() {
                 </TransformGroup>
             </TransformGroup>
             <ReusableBox className={classes.block4}></ReusableBox>
+            <TransformGroup className={classes.chimney}>
+                <ReusableBox className={classes.chimneyPipe}
+                    classNames={{top: classes.chimneyPipeTop}}></ReusableBox>
+            </TransformGroup>
         </TransformGroup>
     </Canvas>
 }
+
 export default App
