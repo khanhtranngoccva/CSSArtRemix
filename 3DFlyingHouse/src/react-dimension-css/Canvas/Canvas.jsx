@@ -13,7 +13,6 @@ export default function Canvas(props) {
     const cameraRef = React.useRef(null);
 
     const [canRotate, setCanRotate] = React.useState(props.allowRotate);
-
     const [rotationData, setRotationData] = React.useState({
         minRotX: props.minRotX ?? -60,
         maxRotX: props.maxRotX ?? 60,
@@ -51,6 +50,25 @@ export default function Canvas(props) {
             });
         }
     }
+
+    React.useEffect(() => {
+        if (!canRotate) {
+            let callbackId;
+
+            function rotate() {
+                const lastRotation = parseInt(getComputedStyle(cameraRef.current).getPropertyValue("--cameraRotY") || 0);
+                cameraRef.current.style.setProperty("--cameraRotY", lastRotation + 1 + "deg");
+                callbackId = requestAnimationFrame(rotate);
+            }
+
+            callbackId = requestAnimationFrame(rotate);
+
+            return () => {
+                cancelAnimationFrame(callbackId);
+            }
+        }
+    }, [canRotate]);
+
     // The camera is not re-rendered anyhow for the sake of perf, let's use Refs instead =).
     return <div className={`${classes.canvas} ${props.className || ""}`} ref={canvasRef} onMouseMove={rotateCamera}
                 style={{

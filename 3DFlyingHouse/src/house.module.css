@@ -1,5 +1,5 @@
 .canvas {
-    background: transparent;
+    background: #90c0ff;
     perspective: 1000px;
     --darkColor: #0002;
     --stripes: repeating-linear-gradient(-180deg, transparent 0, transparent 5px, var(--darkColor) 5px, var(--darkColor) 6px);
@@ -7,25 +7,43 @@
     /*--stripes: repeating-linear-gradient(transparent 0, transparent 9px, var(--darkColor) 9px, var(--darkColor) 10px);*/
 }
 
+.canvas {
+    will-change: transform;
+}
+
+.houseAnchor {
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(20px);
+    }
+}
+
 .house {
-    transform: translate3d(55px, 0, 0)
-    /*transform: scale3d(1.5, 1.5, 1.5);*/
+    transform: scale3d(1.5, 1.5, 1.5) translate3d(55px, 100px, 0)
 }
 
 .slope1 {
     --frontBackground: #dafbff;
     --backBackground: #dafbff;
     --tiles: radial-gradient(circle at 50% 0, transparent 0%, transparent 55%, #0003 57%, #0003 68%, transparent 70%);
-    --leftBackground: var(--tiles), var(--primary);
+    --overlay: repeating-linear-gradient(#0003 0px, transparent 1px, transparent 13px, #0003 14px, var(--primary) 14px, var(--primary) 28px);
+    --leftBackground: var(--overlay), var(--tiles), var(--primary);
     --rightBackground: var(--sparseStripes) #e5e5e5;
     --bottomBackground: #cce8ec;
-    --topBackground: #694225;
+    --topBackground: #694225;;
     transform-origin: 0 calc(var(--height) / -2) 0;
     --tiltAngle: 25deg;
 }
 
 .slope1 > * {
-    background-size: 12px 7px;
+    background-size: 500% 500%, 12px 7px;
 }
 
 .rafter {
@@ -49,9 +67,9 @@
 }
 
 .roof3 .rafter {
-    transform: translateY(-18px);
-    --width: calc(var(--w) + 5px);
-    --length: 7px;
+    transform: translateY(-17px);
+    --width: calc(var(--w) + 2px);
+    --length: 10px;
     --height: 4px;
 }
 
@@ -115,9 +133,14 @@
 }
 
 .roof3 .slope1 {
-    /*--leftBackground: #794c2b;*/
     --tiltAngle: 45deg;
 }
+
+.roof3 .slope1 * {
+    background-position: 0 -9px;
+}
+
+
 
 .attic2 {
     --primary: #f3d09a;
@@ -387,6 +410,10 @@
     --primary: white;
     --secondary: pink;
     --tertiary: #3d3d3d;
+}
+
+.dark .window {
+
 }
 
 .windowFrame {
@@ -1114,7 +1141,7 @@
     --rightBackground: var(--shadeBg), var(--bricks) var(--darkColor);
     --backBackground: var(--bricks) var(--darkColor);
     --bottomBackground: var(--shadeBg), var(--shadeBg), var(--darkColor);
-    transform: translateY(-50px);
+    transform: translateY(-55px);
 }
 
 .chimneyPipe *, .chimneyTopBlock * {
@@ -1136,7 +1163,7 @@
 }
 
 .balloonCluster {
-    transform: translate3d(-50px, -225px, 0);
+    transform: translate3d(-50px, -230px, 0);
 }
 
 .balloons {
@@ -1151,10 +1178,24 @@
 .balloon {
     position: absolute;
     border-radius: 50% / 45% 45% 55% 55%;
-    opacity: 0.7;
+    opacity: 0.8;
     top: unset;
+    transform: rotate(5deg);
     bottom: 0;
+    transform-origin: 50% 100%;
+    animation: blow 4s ease-in-out infinite;
 }
+
+@keyframes blow {
+    0% {
+        transform: rotate(5deg);
+    }
+
+    50% {
+        transform: rotate(-5deg);
+    }
+}
+
 .balloon::before {
     position: absolute;
     content: "";
@@ -1179,10 +1220,11 @@
 }
 
 .string {
-    --background: #fff3;
+    --background: #fff2;
     --width: 1px;
     --height: var(--stringHeight);
     top: unset;
     bottom: 0;
     transform-origin: 50% 100%;
+    transform: rotateY(calc(var(--cameraRotY) * -1));
 }

@@ -21,8 +21,8 @@
 }
 
 .camera {
-    --cameraRotY: 0;
-    --cameraRotX: 0;
+    --cameraRotY: 0deg;
+    --cameraRotX: 0deg;
     transform: rotateX(var(--cameraRotX)) rotateY(var(--cameraRotY));
 }
 
