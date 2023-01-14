@@ -46,11 +46,11 @@ export default function Canvas(props) {
             const rotY = minRotY + (maxRotY - minRotY) * percentageX;
 
             requestAnimationFrame(() => {
-                cameraRef.current.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+                cameraRef.current.style.setProperty("--cameraRotX", rotX + "deg");
+                cameraRef.current.style.setProperty("--cameraRotY", rotY + "deg");
             });
         }
     }
-
     // The camera is not re-rendered anyhow for the sake of perf, let's use Refs instead =).
     return <div className={`${classes.canvas} ${props.className || ""}`} ref={canvasRef} onMouseMove={rotateCamera}
                 style={{

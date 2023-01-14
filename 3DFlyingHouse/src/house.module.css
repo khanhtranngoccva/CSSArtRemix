@@ -8,6 +8,7 @@
 }
 
 .house {
+    transform: translate3d(55px, 0, 0)
     /*transform: scale3d(1.5, 1.5, 1.5);*/
 }
 
@@ -1070,7 +1071,7 @@
 }
 
 .chimney {
-    transform: translate3d(-55px, -50px, 0);
+    transform: translate3d(-50px, -50px, 0);
 }
 
 .chimneyPipe {
@@ -1094,21 +1095,94 @@
     --bottomBackground: var(--shadeBg), var(--shadeBg), var(--darkColor);
 }
 
-.chimneyPipe * {
+.chimneyTopBlock {
+    --primary: brown;
+    --secondary: #9f2222;
+    --darkColor: #7e2121;
+    --bgOffset: 4px;
+    --bricks: linear-gradient(335deg, var(--primary) var(--bgOffset), transparent var(--bgOffset)) -0.9px -5.4px,
+    linear-gradient(335deg, var(--secondary) var(--bgOffset), transparent var(--bgOffset)) -5.5px -0.5px,
+    linear-gradient(155deg, var(--primary) var(--bgOffset), transparent var(--bgOffset)) 0 0,
+    linear-gradient(155deg, var(--secondary) var(--bgOffset), transparent var(--bgOffset)) 5.6px 5px;
+    --width: 45px;
+    --length: 35px;
+    --height: 20px;
+    --shade: rgba(0, 0, 0, 0.12);
+    --shadeBg: linear-gradient(var(--shade), var(--shade));
+    --frontBackground: var(--bricks) var(--darkColor);
+    --leftBackground: var(--shadeBg), var(--bricks) var(--darkColor);
+    --rightBackground: var(--shadeBg), var(--bricks) var(--darkColor);
+    --backBackground: var(--bricks) var(--darkColor);
+    --bottomBackground: var(--shadeBg), var(--shadeBg), var(--darkColor);
+    transform: translateY(-50px);
+}
+
+.chimneyPipe *, .chimneyTopBlock * {
     background-size: 10px 10px;
 }
 
 .chimneyPipeTop {
-    /*padding: 8px;*/
-    background: var(--darkColor);
-    background-size: 10px 10px;
+    padding: 5px;
+    background: var(--secondary);
 }
 
 .chimneyPipeTop::before {
     content: "";
     display: block;
     position: static;
-    /*width: 100%;*/
-    /*height: 100%;*/
-    /*background: var(--darkColor);*/
+    width: 100%;
+    height: 100%;
+    background: var(--darkColor);
+}
+
+.balloonCluster {
+    transform: translate3d(-50px, -225px, 0);
+}
+
+.balloons {
+    transform: translate3d(0, -50px, 0);
+}
+
+.balloonAnchor {
+    --transform: translate3d(0, calc(var(--stringHeight) * -1), 0) rotateX(calc(var(--stringRotX) * -1))  rotateZ(calc(var(--stringRotZ) * -1))  rotateY(calc(var(--cameraRotY) * -1)) ;
+    transform: var(--transform) ;
+}
+
+.balloon {
+    position: absolute;
+    border-radius: 50% / 45% 45% 55% 55%;
+    opacity: 0.7;
+    top: unset;
+    bottom: 0;
+}
+.balloon::before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 35%;
+    border-radius: 50%;
+    aspect-ratio: 5/3;
+    background: #fffd;
+    top: 12.5%;
+    left: 12.5%;
+    transform: rotate(-45deg);
+}
+.strings {
+    transform: translateY(115px);
+}
+
+.stringAnchor {
+    --stringHeight: 140px;
+    --stringRotX: 0;
+    --stringRotZ: 0;
+    transform: rotateZ(var(--stringRotZ)) rotateX(var(--stringRotX)) ;
+}
+
+.string {
+    --background: #fff3;
+    --width: 1px;
+    --height: var(--stringHeight);
+    top: unset;
+    bottom: 0;
+    transform-origin: 50% 100%;
 }

@@ -11,11 +11,11 @@ import classes from "../DimensionCSS.module.css";
  */
 export default function Plane(props) {
     return <div className={`${classes.plane} ${props.className || ""}`} style={{
-        ...props.style,
         "--width": props.width,
         "--height": props.height,
         "--length": props.length,
         "--background": props.background,
+        ...props.style,
     }}>
     </div>
 }

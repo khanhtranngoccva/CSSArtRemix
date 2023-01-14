@@ -21,6 +21,9 @@
 }
 
 .camera {
+    --cameraRotY: 0;
+    --cameraRotX: 0;
+    transform: rotateX(var(--cameraRotX)) rotateY(var(--cameraRotY));
 }
 
 @keyframes _rotateTest {
@@ -35,15 +38,6 @@
 
 .box {
     position: absolute;
-    /*--length: 0;*/
-    /*--height: 0;*/
-    /*--width: 0;*/
-    /*--frontBackground: red;*/
-    /*--backBackground: blue;*/
-    /*--topBackground: green;*/
-    /*--bottomBackground: yellow;*/
-    /*--leftBackground: purple;*/
-    /*--rightBackground: pink;*/
 }
 
 .boxFace {
