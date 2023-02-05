@@ -14,6 +14,7 @@ body {
     align-items: center;
     /*background: #060523;*/
     overflow: hidden;
+    --unitSize: 1.7vmin;
 }
 
 .symmetry {
@@ -25,8 +26,8 @@ body {
 
 .canvas {
     position: relative;
-    width: 800px;
-    height: 800px;
+    width: calc(var(--unitSize) * 80);
+    height: calc(var(--unitSize) * 80);
     background: white;
 }
 
@@ -61,22 +62,22 @@ body {
 }
 
 .backpack {
-    width: 80px;
-    height: 230px;
+    width: calc(var(--unitSize) * 8);
+    height: calc(var(--unitSize) * 23);
     background: var(--shade1);
     border-radius: 30% 50% 50% 30% / 50% 20% 20% 50%;
-    border: 12px solid black;
+    border: calc(var(--unitSize) * 1.2) solid black;
     position: absolute;
-    --x: -145px;
-    --y: 20px;
+    --x: calc(var(--unitSize) * -14.5);
+    --y: calc(var(--unitSize) * 2);
 }
 
 .body {
-    width: 280px;
-    height: 400px;
+    width: calc(var(--unitSize) * 28);
+    height: calc(var(--unitSize) * 40);
     background: var(--shade1);
     border-radius: 40% 60% 10% 5% / 40% 40% 60% 60%;
-    border: 12px solid black;
+    border: calc(var(--unitSize) * 1.2) solid black;
     --vClip: 83%;
     clip-path: polygon(0% 0%, 100% 0%, 100% var(--vClip), 0% var(--vClip));
     overflow: hidden;
@@ -90,56 +91,56 @@ body {
     filter: brightness(1.7);
     content: "";
     display: block;
-    top: -60px;
-    left: 20px;
+    top: calc(var(--unitSize) * -6);
+    left: calc(var(--unitSize) * 2);
     position: absolute;
 }
 
 
 .leg {
-    width: 114px;
-    height: 126px;
+    width: calc(var(--unitSize) * 11.4);
+    height: calc(var(--unitSize) * 12.6);
     background: var(--shade1);
-    border: 9px solid black;
+    border: calc(var(--unitSize) * 0.9) solid black;
     border-top: none;
     border-radius: 0% 0% 54% 54% / 29% 0% 72% 100%;
-    --x: -78.3px;
-    --y: 178.7px;
+    --x: calc(var(--unitSize) * -7.83);
+    --y: calc(var(--unitSize) * 17.869999999999997);
     --r: 0deg;
 }
 
 .leg2 {
-    width: 112.8px;
-    height: 99px;
+    width: calc(var(--unitSize) * 11.28);
+    height: calc(var(--unitSize) * 9.9);
     background: var(--shade1);
-    border: 10px solid black;
-    border-block: 11px solid;
+    border: calc(var(--unitSize) * 1) solid black;
+    border-block: calc(var(--unitSize) * 1.1) solid;
     border-top: none;
     border-radius: 0 0 40% 40% / 0 0 100% 100%;
-    --x: 75px;
-    --y: 176px;
+    --x: calc(var(--unitSize) * 7.5);
+    --y: calc(var(--unitSize) * 17.6);
 }
 
 .body2 {
-    width: 84px;
-    height: 28px;
+    width: calc(var(--unitSize) * 8.4);
+    height: calc(var(--unitSize) * 2.8);
     background: var(--shade1);
-    border: 10px none black;
-    border-right: 2px solid;
+    border: calc(var(--unitSize) * 1) none black;
+    border-right: calc(var(--unitSize) * 0.2) solid;
     border-bottom-style: solid;
     border-radius: 0 0 100% 0;
-    --x: 12px;
-    --y: 125px;
+    --x: calc(var(--unitSize) * 1.2);
+    --y: calc(var(--unitSize) * 12.5);
 }
 
 .visor {
-    width: 234px;
-    height: 150px;
+    width: calc(var(--unitSize) * 23.4);
+    height: calc(var(--unitSize) * 15);
     border-radius: 40% 40% 40% 50% / 50% 60% 50% 47%;
-    border: 10px solid black;
+    border: calc(var(--unitSize) * 1) solid black;
     background: gray;
-    --y: -71px;
-    --x: 47px;
+    --y: calc(var(--unitSize) * -7.1);
+    --x: calc(var(--unitSize) * 4.7);
     overflow: hidden;
 }
 
@@ -148,11 +149,11 @@ body {
     display: block;
     position: absolute;
     background: #bbebff;
-    width: 220px;
-    height: 110px;
+    width: calc(var(--unitSize) * 22);
+    height: calc(var(--unitSize) * 11);
     border-radius: 0 0 70% 30% / 0 0 100% 100%;
-    left: 10px;
-    top: -10px;
+    left: calc(var(--unitSize) * 1);
+    top: calc(var(--unitSize) * -1);
     transform: rotate(20deg);
 }
 
@@ -161,19 +162,19 @@ body {
     display: block;
     position: absolute;
     background: white;
-    width: 100px;
-    height: 40px;
+    width: calc(var(--unitSize) * 10);
+    height: calc(var(--unitSize) * 4);
     border-radius: 50%;
-    left: 82px;
-    top: 10px;
+    left: calc(var(--unitSize) * 8.2);
+    top: calc(var(--unitSize) * 1);
     transform: rotate(5deg);
 }
 
 .shadow {
     background: #0004;
-    width: 350px;
-    height: 70px;
+    width: calc(var(--unitSize) * 35);
+    height: calc(var(--unitSize) * 7);
     border-radius: 50%;
-    --y: 225px;
-    --x: -10px;
+    --y: calc(var(--unitSize) * 22.5);
+    --x: calc(var(--unitSize) * -1);
 }

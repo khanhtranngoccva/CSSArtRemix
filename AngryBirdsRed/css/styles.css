@@ -73,224 +73,151 @@ img {
     position: absolute;
 }
 
-.bunny {
-    --accent1: #ffe5e8;
-    --accent2: #ffcfcf;
-    --accent3: #ffe5e8;
+.red {
+    --accent1: #D4002C;
+    --accent2: #E1C4A7;
+    --accent3: #FBB91E;
+    --accent4: #F59D1E;
+    --accent5: #bd0027;
     --black: #2a2a2a;
-    position: relative;
+    /*position: relative;*/
     flex-direction: column;
 }
 
-.face {
+.head {
     width: 400px;
     aspect-ratio: 1/1;
     border-radius: 100px;
     background: var(--accent1);
-    position: relative;
+    overflow: hidden;
+    /*border: 5px solid black;*/
 }
 
-.ears {
-    position: relative;
-    height: 300px;
-    /*--y: -100px;*/
-}
-
-
-.ear {
-    width: 125px;
-    height: 410px;
-    border-radius: 50%;
-    background: var(--accent3);
-    --x: -70px;
-    --y: 50px;
-    --r: -15deg;
-    transform-origin: 50% 90%;
-    animation: earFlap var(--duration) ease-in-out infinite;
-}
-
-.ear.flipVertical {
-    /*animation-delay: calc(var(--duration) / -2);*/
-}
-
-.ear::before {
-    width: 78px;
-    height: 320px;
+.head::before {
+    content: "";
+    display: block;
+    width: 400px;
+    aspect-ratio: 2/1;
     border-radius: 50%;
     background: var(--accent2);
-    content: "";
-    display: block;
-    top: 38px;
-    left: 23px;
+    top: 260px;
 }
 
-@keyframes earFlap {
-    0% {
-        --r: -15deg;
-        transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(-15deg) skew(var(--s));
-    }
-
-    50% {
-        --r: -5deg;
-        transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(-15deg) skew(var(--s));;
-    }
+.face {
+    --x: 60px;
 }
 
-.eyes {
-    width: 100px;
-    height: 150px;
-    border-radius: 999px;
-    --y: -50px;
-    --x: -60px;
+.eye {
+    width: 110px;
+    /*aspect-ratio: 1/1;*/
+    height: 140px;
+    border-radius: 500px;
+    background-clip: content-box;
+    border: 4px solid #0003;
+    border-bottom: 7px solid #0003;
     background: white;
-    overflow: hidden;
+    --x: -53px;
+    --y: -8px;
 }
 
-.eyeCenter {
+.eyebrow {
+    height: 130px;
+    border-bottom: 150px solid black;
     width: 50px;
-    height: 90px;
-    background: var(--black);
-    border-radius: 999px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    --r: 109deg;
+    --y: -70px;
+    --x: -66px;
 }
 
-.eyeCenter::before {
+.eye::before {
     content: "";
     display: block;
-    width: 25px;
-    height: 40px;
-    border-radius: 999px;
-    background: white;
-    left: -10px;
-    top: 20px;
+    position: absolute;
+    /*aspect-ratio: 1/1;*/
+    width: 30px;
+    height: 50px;
+    border-radius: 500px;
+    background: var(--black);
+    top: 45px;
+    left: 55px;
 }
 
-.eyelid {
-    width: 100%;
+.beak {
+    --r: 10deg;
+    --x: -50px;
+    --y: 15px;
+}
+
+.beakP1 {
+    width: 150px;
+    height: 60px;
+    border-radius: 80% 120% 0 0 / 200% 200% 0 0;
+    background: var(--accent3);
+}
+
+.beakP2 {
+    width: 120px;
+    height: 60px;
+    border-radius: 0 0 80% 120% / 0 0 200% 200%;
+    background: var(--accent4);
+    --y: 48px;
+}
+
+.hair {
+    border-radius: 50% / 30% 30% 70% 70%;
     background: var(--accent1);
-    top: 0;
-    animation: blink calc(var(--duration) * 2) linear infinite;
+    width: 60px;
+    height: 170px;
+    --r: -50deg;
+    --y: -240px;
+    --x: 20px;
 }
 
-@keyframes blink {
-    0% {
-        height: 0;
-    }
-
-    5% {
-        height: 100%;
-    }
-
-    10% {
-        height: 0;
-    }
+.hairP2 {
+    background: var(--accent5);
+    --x: -10px;
+    --r: -79deg;
+    --y: -214px;
+    width: 60px;
+    height: 200px;
 }
 
-/*.nose {*/
-/*    --y: 30px;*/
-/*    clip-path: polygon(-30px -2px, 30px -2px, 30px 30px, -30px 30px);*/
-/*}*/
+.tail {
+    height: 0px;
+    border-bottom: 50px solid black;
+    width: 23px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    --r: 114deg;
+    --y: 30px;
+    --x: -220px;
+}
 
-/*.noseP1 {*/
-/*    width: 30px;*/
-/*    height: 30px;*/
-/*    background: black;*/
-/*    transform: scaleY(1.3) rotate(45deg);*/
-/*    clip-path: polygon(100% 0, 100% 100%, 0 100%);*/
-/*    border-radius: 2px;*/
-/*}*/
+.tail2 {
+    --r: 86deg;
+    --y: 51px;
+    --x: -223px;
+}
 
-/*.noseP2 {*/
-/*    width: 41px;*/
-/*    height: 3px;*/
-/*    background: black;*/
-/*    border-radius: 4px 4px 0 0 / 100% 100% 0 0;*/
-/*    --y: -1px;*/
-/*}*/
-
-.nose {
-    width: 40px;
-    aspect-ratio: 1/1;
-    background: var(--black);
-    border-radius: 50% / 20% 20% 80% 80%;
+.tail3 {
+    --r: 52deg;
     --y: 70px;
+    --x: -216px;
 }
 
-.mouth {
-    width: 50px;
-    aspect-ratio: 2/1;
-    border-radius: 50% / 0 0 100% 100%;
-    --border: 3px;
-    border: var(--border) solid var(--black);
-    border-top: 0;
-    --x: calc(-50% + var(--border) / 2);
-    --y: 100px;
-}
-
-.whisker {
-    --x: -240px;
-    --y: 40px;
-    /* transform-origin: 100% 50%; */
-}
-
-.whiskerInner {
-    height: 3px;
+.eye::after {
+    background: white;
     border-radius: 9999px;
-    width: 200px;
-    background: var(--black);
-    transform-origin: 100% 50%;
-    --r: 7deg;
+    height: 30px;
+    width: 15px;
+    content: "";
+    display: block;
+    top: 54px;
+    left: 53px;
 }
 
-.whisker2 {
-    --y: 50px;
-}
-
-.whisker2 .whiskerInner {
-    --r: 0;
-}
-
-.whisker3 {
-    --y: 60px;
-}
-
-.whisker3 .whiskerInner {
-    --r: -7deg;
-}
-
-.bunny {
-    transform-origin: 10% 100%;
-    --amplitude: 3deg;
-    --duration: 1s;
-    animation: fidgety var(--duration) ease-in-out infinite;
-    animation-delay: -0.5s;
-}
-
-@keyframes fidgety {
-    0% {
-        transform-origin: 10% 100%;
-        transform: none;
-    }
-
-    25% {
-        transform: rotate(calc(var(--amplitude) * -1));
-    }
-
-    50% {
-        transform-origin: 10% 100%;
-        transform: none;
-    }
-
-    50.1% {
-        transform-origin: 90% 100%;
-        transform: none;
-    }
-
-    75% {
-        transform: rotate(calc(var(--amplitude)));
-    }
-
-    100% {
-        transform-origin: 90% 100%;
-        transform: none;
-    }
+.eye.flipVertical::after {
+    left: 75px;
 }
