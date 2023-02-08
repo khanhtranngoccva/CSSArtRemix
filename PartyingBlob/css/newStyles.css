@@ -1,0 +1,444 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background: #060523;*/
+    overflow: hidden;
+    background: dodgerblue;
+}
+
+.symmetry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.canvas {
+    position: relative;
+    width: calc(var(--unitSize) * 80);
+    height: calc(var(--unitSize) * 80);
+    --unitSize: 1.5vmin;
+    --duration: 0.6s
+}
+
+.canvas * {
+    position: absolute;
+}
+
+.transform {
+    --x: 0;
+    --y: 0;
+    --r: 0;
+    --s: 0;
+    --sy: 0;
+    --sx: 0;
+    --_scale: 1;
+    transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) skew(var(--s)) skewX(var(--sx)) skewY(var(--sy));
+}
+
+.flipVertical {
+    --x: 0;
+    --y: 0;
+    --r: 0;
+    --s: 0;
+    --sy: 0;
+    --sx: 0;
+    --_scale: -1;
+    transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) skew(var(--s)) skewX(var(--sx)) skewY(var(--sy));
+}
+
+.canvas {
+
+}
+
+.blob {
+    --primary: #ffdb50;
+    --border: rgba(0, 0, 0, 0.46);
+    --black: black;
+
+}
+
+.blobY {
+    --y: calc(var(--unitSize) * 3);
+}
+
+.blobP1 {
+    --y: calc(var(--unitSize) * 11.9);
+}
+
+.blobP1C {
+    background: var(--primary);
+    height: calc(var(--unitSize) * 6);
+    border-radius: 0 0 50% 50% / 0 0 100% 100%;
+    width: calc(var(--unitSize) * 30);
+    transform-origin: 50% 0;
+
+    animation: blobBounce3 var(--duration) infinite;
+}
+
+.blobP2 {
+    background: var(--primary);
+    height: calc(var(--unitSize) * 18);
+    border-radius: 60% 40% 4% 0 / 100% 60% 40% 0;
+    width: calc(var(--unitSize) * 30);
+    /*--y: calc(var(--unitSize) * -2);*/
+}
+
+.blobP3 {
+    /* background: var(--primary); */
+    height: calc(var(--unitSize) * 0.6);
+    width: calc(var(--unitSize) * 2.8);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    border: calc(var(--unitSize) * 0.5) solid var(--primary);
+    border-inline-width: calc(var(--unitSize) * 0.2);
+    /*border-color: red;*/
+    border-bottom: none;
+    --r: 266deg;
+    --y: calc(var(--unitSize) * 7.5);
+    --x: calc(var(--unitSize) * 14.4);
+}
+
+.blobP4 {
+    background: var(--primary);
+    height: calc(var(--unitSize) * 1);
+    width: calc(var(--unitSize) * 2.9);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    border: calc(var(--unitSize) * 0.5) solid var(--primary);
+    border-inline-width: calc(var(--unitSize) * 0.2);
+    /* border-color: red; */
+    border-bottom: none;
+    --r: 434deg;
+    --y: calc(var(--unitSize) * 8.7);
+    --x: calc(var(--unitSize) * 14.4);
+}
+
+.eye {
+    background: var(--black);
+    width: calc(var(--unitSize) * 3);
+    height: calc(var(--unitSize) * 4);
+    border-radius: 50%;
+}
+
+.eye1 {
+    --r: 20deg;
+    --y: calc(var(--unitSize) * -2);
+    --x: calc(var(--unitSize) * -2);
+}
+
+.eye2 {
+    --r: 10deg;
+    --y: calc(var(--unitSize) * -1);
+    --x: calc(var(--unitSize) * 5);
+}
+
+.mouth {
+    --r: 8deg;
+    --y: calc(var(--unitSize) * 2.5);
+    --x: calc(var(--unitSize) * 0.8);
+}
+
+.mouthP1 {
+    width: calc(var(--unitSize) * 3.4);
+    height: calc(var(--unitSize) * 4);
+    background: var(--black);
+    border-radius: 0 0 75% 75% / 0 0 150% 150%;
+    transform-origin: 50% 0;
+    animation: mouthAnimP1 var(--duration) linear infinite;
+}
+
+.mouthP2 {
+    --y: calc(var(--unitSize) * -2.5);
+}
+
+.mouthP2C {
+    transform: scaleY(0);
+    transform-origin: 50% calc(var(--unitSize) * 0.5);
+    animation: mouthAnimP3 var(--duration) linear infinite;
+}
+
+.mouthP2_1 {
+    --r: 512deg;
+    --x: calc(var(--unitSize) * -0.86);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /*outline: calc(var(--unitSize) * 0.2) solid red;*/
+}
+
+.mouthP2_1C {
+    height: calc(var(--unitSize) * 1);
+    width: calc(var(--unitSize) * 1.9);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    border: calc(var(--unitSize) * 0.9) solid var(--black);
+    border-inline-width: calc(var(--unitSize) * 0.3);
+    /*border-color: red;*/
+    border-bottom: none;
+    animation: mouthAnimP2 var(--duration) infinite;
+    transform-origin: 50% 100%;
+}
+
+@keyframes mouthAnimP1 {
+    50% {
+        transform: scaleY(0);
+    }
+}
+
+/*@keyframes mouthAnimP2 {*/
+/*    40% {*/
+/*        transform: scaleY(1);*/
+/*    }*/
+
+
+/*    50% {*/
+/*        transform: scaleY(0.25);*/
+/*    }*/
+
+
+/*    60% {*/
+/*        transform: scaleY(1);*/
+/*    }*/
+/*}*/
+
+@keyframes mouthAnimP3 {
+    50% {
+        transform: scaleY(0.7);
+    }
+}
+
+@keyframes blobBounce {
+    0% {
+        transform: translate(0);
+        animation-timing-function: ease-out;
+    }
+
+    50% {
+        transform: translateY(calc(var(--unitSize) * -12));
+        animation-timing-function: ease-in;
+    }
+}
+
+
+@keyframes blobBounce2 {
+    0% {
+        transform: scaleY(1);
+        animation-timing-function: ease-out;
+    }
+
+    50% {
+        transform: scaleY(1.15);
+        animation-timing-function: ease-in;
+    }
+}
+
+.blobP1C {
+    transform: scaleY(0.2);
+}
+
+@keyframes blobBounce3 {
+    0% {
+        transform: scaleY(0.8);
+        animation-timing-function: ease-out;
+    }
+
+    20% {
+        transform: scaleY(1.5);
+    }
+
+    80% {
+        transform: scaleY(1.5);
+        animation-timing-function: ease-in;
+    }
+
+    100% {
+        transform: scaleY(0.8);
+        animation-timing-function: ease-out;
+    }
+}
+
+.blobBody {
+    animation: blobBounce2 var(--duration) infinite;
+}
+
+.blobAxis {
+    /*animation: flip calc(2 * var(--duration)) linear infinite;*/
+    animation-delay: calc(-0.5 * var(--duration));
+}
+
+@keyframes flip {
+    0% {
+        transform: scaleX(1);
+    }
+
+    49.9999% {
+        transform: scaleX(1);
+    }
+    50% {
+        transform: scaleX(-1);
+    }
+
+    100% {
+        transform: scaleX(-1);
+    }
+}
+
+.handP1 {
+    background: var(--primary);
+    border: calc(var(--unitSize) * 0.5) solid var(--border);
+    width: calc(var(--unitSize) * 6);
+    height: calc(var(--unitSize) * 5);
+    border-bottom: hidden;
+    border-radius: 50% / 20% 0% 0 0;
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 30%, 50% 0);
+}
+
+.handP2 {
+    background: var(--primary);
+    border: calc(var(--unitSize) * 0.5) solid var(--border);
+    /*background: red;*/
+    width: calc(var(--unitSize) * 2.2);
+    height: calc(var(--unitSize) * 2);
+    border-bottom: hidden;
+    border-radius: calc(var(--unitSize) * 0.5);
+    clip-path: polygon(0 0, 0 100%, 100% 0);
+    --x: calc(var(--unitSize) * -0.3);
+    --y: calc(var(--unitSize) * -1.8);
+    --r: 49deg;
+}
+
+.handP3 {
+    background: var(--primary);
+    border: calc(var(--unitSize) * 0.5) solid var(--border);
+    /*background: red;*/
+    width: calc(var(--unitSize) * 2.7);
+    height: calc(var(--unitSize) * 1.3);
+    border-bottom: hidden;
+    border-radius: 50% / 100% 100% 0 0;
+    --x: calc(var(--unitSize) * 1.85);
+    --y: calc(var(--unitSize) * -2);
+    --r: 16deg;
+}
+
+.handP4 {
+    background: var(--primary);
+    border: calc(var(--unitSize) * 0.5) solid var(--border);
+    width: calc(var(--unitSize) * 1.5);
+    height: calc(var(--unitSize) * 4.7);
+    border-bottom: hidden;
+    border-right: hidden;
+    border-radius: 100% 0 0 0;
+    --x: calc(var(--unitSize) * -3);
+    --y: calc(var(--unitSize) * 0.2);
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 30%, 70% 0);
+}
+
+.handP5 {
+    background: var(--primary);
+    border: calc(var(--unitSize) * 0.5) solid var(--border);
+    width: calc(var(--unitSize) * 1.5);
+    height: calc(var(--unitSize) * 5);
+    border-bottom: hidden;
+    border-left: hidden;
+    border-radius: 0 100% 0 0;
+    --x: calc(var(--unitSize) * 2.9);
+    --y: calc(var(--unitSize) * 0);
+}
+
+.hand {
+    --x: calc(var(--unitSize) * 8);
+    --y: calc(var(--unitSize) * 4);
+}
+
+.hand2 {
+    --x: calc(var(--unitSize) * -13.5);
+    --y: calc(var(--unitSize) * 0);
+}
+
+.hand2 .handC2 {
+    --r: -60deg;
+}
+
+.handC2 {
+    --r: -40deg;
+}
+
+.blob {
+    animation: blobBounce var(--duration) infinite;
+}
+
+.handC {
+    animation: hands var(--duration) linear infinite;
+    animation-delay: calc(-0.5 * var(--duration));
+}
+
+.blobBody {
+    animation: blobBounce2 var(--duration) infinite;
+}
+
+.blobAxis {
+    animation: flip calc(2 * var(--duration)) linear infinite;
+    animation-delay: calc(-0.5 * var(--duration));
+}
+
+@keyframes hands {
+    0% {
+        animation-timing-function: ease-in;
+    }
+
+    50% {
+        transform: translate(calc(var(--unitSize) * -2), calc(var(--unitSize) * 5));
+        animation-timing-function: ease-out;
+    }
+}
+
+.blobHue {
+    animation: blobHue var(--duration) linear infinite;
+    z-index: 3;
+}
+
+@keyframes blobHue {
+    0% {
+        filter: hue-rotate(0);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.shadow {
+    --y: calc(var(--unitSize) * 12);
+}
+
+.shadowInner {
+    background: #0005;
+    width: calc(var(--unitSize) * 30);
+    height: calc(var(--unitSize) * 5);
+    border-radius: 50%;
+    transform: scale(1.15);
+    animation: shadow var(--duration) infinite;
+
+}
+
+@keyframes shadow {
+    0% {
+        transform: scale(1.15);
+        animation-timing-function: ease-out;
+    }
+
+    50% {
+        background: #0005;
+        transform: scale(1);
+        animation-timing-function: ease-in;
+    }
+}

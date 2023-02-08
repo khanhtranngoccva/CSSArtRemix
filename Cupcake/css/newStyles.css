@@ -62,7 +62,7 @@ body {
 .muffin {
     --brown: #ef9f72;
     --dough: #ffdd98;
-    --border: rgba(75, 75, 75, 0.67);
+    --border: rgba(75, 75, 75, 0.81);
     --black: #383838;
     animation: squishy var(--duration) infinite ease-in-out;
     transform-origin: 50% calc(var(--unitSize) * 20);
