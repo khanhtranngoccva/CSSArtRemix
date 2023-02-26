@@ -30,8 +30,11 @@ body {
     width: 800px;
     height: 800px;
     --gold: gold;
+    --darkGold: #dab900;
     --border: #0005;
-    --duration: 0.6s
+    --disc: #282828;
+    --discDark: #181818;
+    --duration: 0.4s
 }
 
 .canvas * {
@@ -58,6 +61,17 @@ body {
     --sx: 0;
     --_scale: -1;
     transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) skew(var(--s)) skewX(var(--sx)) skewY(var(--sy));
+}
+
+.flipDiagonal {
+    --x: 0;
+    --y: 0;
+    --r: 0;
+    --s: 0;
+    --sy: 0;
+    --sx: 0;
+    --_scale: -1, -1;
+    transform: scale(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) skew(var(--s)) skewX(var(--sx)) skewY(var(--sy));
 }
 
 .pseudo::before, .pseudo::after {
@@ -156,17 +170,94 @@ body {
     border-radius: 55% 45% 0 0 / 100% 100% 0 0;
     border: 5px solid var(--border);
     border-bottom: none;
-
+    transform-origin: 100% 100%;
 }
 
 .hand1 {
-    --r: -18deg;
-    --x: -188px;
-    --y: -33px;
+    --r: -157deg;
+    --x: -179px;
+    --y: 96px;
 }
 
 .hand2 {
     --r: 28deg;
     --x: 206px;
     --y: 27px;
+}
+
+
+.hand1 .hand {
+    animation: handSpinDisc var(--duration) infinite ease-in-out;
+}
+
+@keyframes handSpinDisc {
+    50% {
+        transform: scaleY(1.15) skewX(-15deg);
+    }
+}
+
+.discInner {
+    width:250px;
+    aspect-ratio: 1/1;
+    border: 5px solid var(--gold);
+    background: radial-gradient(circle, transparent 10%, var(--discDark) 10%, var(--discDark) 15%, var(--disc) 15%);
+    border-radius: 50%;
+    transform: rotate(70deg);
+    animation: spinDisc var(--duration) infinite ease-in-out;
+}
+
+.discTriangle {
+    background: white;
+    width: 21%;
+    aspect-ratio: 2/1;
+    clip-path: polygon(100% 5%, 100% 100%, 5% 100%);
+    --y: -325%;
+    --x: -50%;
+}
+
+.discTriangle2 {
+    width: 15%;
+    --y: -250%;
+}
+
+.disc {
+    --sy: -20deg;
+    --r: 50deg;
+}
+
+.discWithShadow {
+    filter: drop-shadow(0 5px var(--darkGold));
+    --y: 210px;
+    --x: -220px;
+}
+
+.disc2 {
+    --y: 275px;
+    --x: 110px;
+}
+
+.disc2 .discInner {
+    animation: spinDisc2 calc(var(--duration) * 3) infinite linear;
+}
+
+@keyframes spinDisc {
+    50% {
+        transform: rotate(40deg);
+    }
+}
+
+@keyframes spinDisc2 {
+    0% {
+        transform: rotate(0);
+
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.djPlayerInner {
+    width: 300px;
+    height: 150px
 }
