@@ -1,0 +1,172 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background: #060523;*/
+    overflow: hidden;
+    --background: #4dd77d;
+    background: var(--background);
+}
+
+.symmetry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.canvas {
+    position: relative;
+    width: 800px;
+    height: 800px;
+    --gold: gold;
+    --border: #0005;
+    --duration: 0.6s
+}
+
+.canvas * {
+    position: absolute;
+}
+
+.transform {
+    --x: 0;
+    --y: 0;
+    --r: 0;
+    --s: 0;
+    --sy: 0;
+    --sx: 0;
+    --_scale: 1;
+    transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) skew(var(--s)) skewX(var(--sx)) skewY(var(--sy));
+}
+
+.flipVertical {
+    --x: 0;
+    --y: 0;
+    --r: 0;
+    --s: 0;
+    --sy: 0;
+    --sx: 0;
+    --_scale: -1;
+    transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) skew(var(--s)) skewX(var(--sx)) skewY(var(--sy));
+}
+
+.pseudo::before, .pseudo::after {
+    content: "";
+    display: block;
+}
+
+.table {
+    width: 1700px;
+    height: 500px;
+    background: var(--background);
+    /*background: gray;*/
+    --r: 10deg;
+    --y: 350px;
+}
+
+.table::before {
+    width: 100%;
+    height: 5px;
+    border-radius: 9999px;
+    background: green;
+}
+
+.blob {
+    width: 550px;
+    height: 500px;
+    --y: 100px;
+    background: var(--gold);
+    border-radius: 50% / 70% 70% 30% 30%;
+}
+
+
+.eye {
+    background: black;
+    width: 45px;
+    aspect-ratio: 3/4;
+    border-radius: 50%;
+    --r: 5deg;
+}
+
+.eye1 {
+    --x: -30px;
+    --y: -140px;
+}
+
+.eye2 {
+    --x: 60px;
+    --y: -120px;
+}
+
+
+.mouth {
+    /*outline: 2px solid;*/
+    --y: -55px;
+    --x: 5px;
+}
+
+.mouthP {
+    width: 35px;
+    height: 6px;
+    border-radius: 3px;
+    background: black;
+}
+
+.mouthP2 {
+    width: 26px;
+    --r: -30deg;
+    --y: -10px;
+    --x: -9px;
+}
+
+.mouthP1 {
+    --r: 63deg;
+    --y: -18px;
+    --x: -25px;
+}
+
+.mouthP3 {
+    width: 26px;
+    --r: 54deg;
+    --y: -7px;
+    --x: 7px;
+}
+
+
+.mouthP4 {
+    --r: 140deg;
+    --y: -8px;
+    --x: 24px;
+}
+
+.hand {
+    width: 170px;
+    height: 125px;
+    background: var(--gold);
+    border-radius: 55% 45% 0 0 / 100% 100% 0 0;
+    border: 5px solid var(--border);
+    border-bottom: none;
+
+}
+
+.hand1 {
+    --r: -18deg;
+    --x: -188px;
+    --y: -33px;
+}
+
+.hand2 {
+    --r: 28deg;
+    --x: 206px;
+    --y: 27px;
+}
