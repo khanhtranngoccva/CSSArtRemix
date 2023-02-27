@@ -33,7 +33,7 @@ body {
     --darkGold: #dab900;
     --border: #0005;
     --disc: #282828;
-    --discDark: #181818;
+    --discDark: #101010;
     --duration: 0.4s
 }
 
@@ -98,6 +98,7 @@ body {
 .blob {
     width: 550px;
     height: 500px;
+    --x: 50px;
     --y: 100px;
     background: var(--gold);
     border-radius: 50% / 70% 70% 30% 30%;
@@ -174,21 +175,33 @@ body {
 }
 
 .hand1 {
-    --r: -157deg;
-    --x: -179px;
-    --y: 96px;
+    --r: -144deg;
+    --x: -138px;
+    --y: 91px;
 }
 
 .hand2 {
-    --r: 28deg;
-    --x: 206px;
-    --y: 27px;
+    --r: 46deg;
+    --x: 305px;
+    --y: 18px;
 }
 
 
 .hand1 .hand {
     animation: handSpinDisc var(--duration) infinite ease-in-out;
 }
+
+.hand2 .hand {
+    transform-origin: 100% 100%;
+    animation: handWave var(--duration) infinite ease-in-out;
+}
+
+@keyframes handWave {
+    50% {
+        transform: translate(40px, 50px) scaleY(0.7) rotate(10deg);
+    }
+}
+
 
 @keyframes handSpinDisc {
     50% {
@@ -257,7 +270,90 @@ body {
     }
 }
 
+.djPlayer {
+    --y: 250px;
+    --x: -50px;
+    filter: drop-shadow(0 5px var(--gold)) drop-shadow(0 10px var(--gold));
+}
+
 .djPlayerInner {
-    width: 300px;
-    height: 150px
+    width: 800px;
+    height: 282px;
+    background: var(--disc);
+    --sx: -38deg;
+    --r: 10deg;
+    border: 10px solid;
+}
+
+.headphones {
+    --y: -123px;
+    --x: 102px;
+}
+
+.headphonesP1 {
+    width: 282px;
+    height: 71px;
+    border-radius: 50% / 100% 100% 0 0;
+    border: 15px solid var(--disc);
+    border-bottom: none;
+    --r: 14deg;
+    --y: 5px;
+    --x: -5px;
+}
+
+
+.headphonesP2 {
+    width: 61px;
+    height: 100px;
+    --r: -26deg;
+    --x: 135px;
+    --y: 67px;
+}
+.headphonesP2::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--discDark);
+    z-index: -1;
+    border-radius: 50%;
+    left: -12px;
+}
+
+.headphonesP2::after {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background: var(--disc);
+    border: 8px solid #ff4f4f;
+}
+
+
+.headphonesP3 {
+    width: 61px;
+    height: 100px;
+    --r: -130deg;
+    --x: -176px;
+    --y: 14px;
+}
+
+.headphonesP3::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--discDark);
+    z-index: -1;
+    border-radius: 50%;
+    left: -12px;
+}
+
+.headphonesP3::after {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background: var(--disc);
+    border: 8px solid #ff4f4f;
 }

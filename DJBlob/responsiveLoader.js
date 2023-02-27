@@ -1,4 +1,4 @@
-const SIZE_OFFSET = 1.5;
+const SIZE_OFFSET = 0.9;
 
 function resize(e) {
     const minSize = Math.min(window.innerHeight, window.innerWidth);
