@@ -1,0 +1,281 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background: #060523;*/
+    overflow: hidden;
+    background: lightgoldenrodyellow;
+}
+
+.symmetry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.pseudo::before, .pseudo::after {
+    position: absolute;
+    content: "";
+    display: block;
+}
+
+.canvas {
+    position: relative;
+    width: 800px;
+    height: 800px;
+
+    --duration: 0.6s
+}
+
+.canvas * {
+    position: absolute;
+}
+
+.transform {
+    --x: 0;
+    --y: 0;
+    --r: 0;
+    --s: 0;
+    --sy: 0;
+    --sx: 0;
+    --_scale: 1;
+    transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) skew(var(--s)) skewX(var(--sx)) skewY(var(--sy));
+}
+
+.flipVertical {
+    --x: 0;
+    --y: 0;
+    --r: 0;
+    --s: 0;
+    --sy: 0;
+    --sx: 0;
+    --_scale: -1;
+    transform: scaleX(var(--_scale)) translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) skew(var(--s)) skewX(var(--sx)) skewY(var(--sy));
+}
+
+.drumRing {
+    width: 400px;
+    height: 150px;
+    border-radius: 50%;
+    background: #ffefd7;
+    border: 10px solid gold;
+    box-shadow: 0 8px 0 2px #eeb72d;
+    border-inline-width: 6px;
+    border-bottom-width: 12px;
+}
+
+.drumBody {
+    background: #795443;
+    border-inline: 6px solid gold;
+    width: 425px;
+    height: 220px;
+    border-radius: 6.5% / 60%;
+    --y: 100px;
+    /*border-bottom: 8px solid gold;*/
+    /*box-shadow: 0 10px 0 #eeb72d;*/
+    /*border-radius: 50% / 0 0 75px 75px;*/
+}
+
+.drumRing2 {
+    --y: 200px;
+    border-inline-width: 7px;
+    background: #795443;
+}
+
+.drumOrnaments {
+    width: 430px;
+    /*outline: 2px solid red;*/
+    display: flex;
+    /*display: none;*/
+    justify-content: space-between;
+    --y: 35px;
+}
+
+.drumOrnament {
+    position: relative;
+    height: 30px;
+    aspect-ratio: 1/1;
+    background: #bd9e78;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.drumOrnament::before {
+    background: #d5bb9a;
+    height: 30px;
+    aspect-ratio: 1/1;
+    position: absolute;
+    border-radius: 50%;
+    top: -4px;
+    left: -4px;
+}
+
+.drumStrings {
+    --y: 155px;
+}
+
+.drumString {
+    background: white;
+    width: 3px;
+    --y: 15px;
+    height: 150px;
+    border-radius: 9999px;
+}
+
+.drumString2 {
+    --x: -125px;
+    --y: 0px;
+}
+
+.drumString3 {
+    --x: -200px;
+    --y: -48px;
+}
+
+.drumString3 {
+    --x: -200px;
+    --y: -48px;
+}
+
+.drumString4 {
+    --x: -163px;
+    --y: -24px;
+    --r: -21deg;
+    height: 209px;
+}
+
+.drumString5 {
+    --x: -163px;
+    --y: -25px;
+    --r: 36deg;
+    height: 129px;
+}
+
+.drumString6 {
+    --x: -63px;
+    --y: 7px;
+    --r: 43deg;
+    height: 187px;
+}
+
+.drumString7 {
+    --x: -63px;
+    --y: 5px;
+    --r: 143deg;
+    height: 210px;
+}
+
+.drumString8 {
+    --x: -65px;
+    --y: -64px;
+    --r: 99deg;
+    height: 109px;
+}
+
+.drumString9 {
+    --x: -59px;
+    --y: 10px;
+    --r: 143deg;
+    height: 196px;
+}
+
+.drumString10 {
+    --x: -163px;
+    --y: -94px;
+    --r: 118deg;
+    height: 81px;
+}
+
+
+.drumString11 {
+    --x: -163px;
+    --y: 56px;
+    --r: 119deg;
+    height: 81px;
+}
+
+.drumString12 {
+    --x: -65px;
+    --y: 87px;
+    --r: 97deg;
+    height: 112px;
+}
+
+/*.drumString11 {*/
+/*    --x: -161px;*/
+/*    --y: -93px;*/
+/*    --r: 121deg;*/
+/*    height: 96px;*/
+/*}*/
+
+.drumOrnament:nth-child(3) {
+    --y: 63px;
+    margin-inline: 50px;
+}
+
+.drumOrnament:nth-child(2), .drumOrnament:nth-child(4) {
+    --y: 47px;
+}
+
+.drumOrnaments2 {
+    --y: 190px;
+}
+
+.drumStick {
+    position: absolute;
+    width: 10px;
+    height: 302px;
+    background: #9f8364;
+    border-radius: 9999px;
+    --r: -44deg;
+    --y: 6px;
+    --x: 252px;
+}
+
+.drumStick::before {
+    top: 0;
+    width: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, #d5bb9a 55%, #bd9e78 56%);
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(calc(var(--r) * -1));
+}
+
+
+.drumStick2 {
+    width: 10px;
+    height: 265px;
+    background: #9f8364;
+    border-radius: 9999px;
+    --r: 97deg;
+    --y: -26px;
+    --x: -204px;
+}
+
+.drum {
+    --r: -20deg;
+}
+
+.circle {
+    background: white;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    height: 500px;
+}
+
+.circle2 {
+    background: #f8ffe9;
+    height: 800px;
+}
