@@ -1,0 +1,35 @@
+.flag {
+    position: absolute;
+    display: flex;
+}
+
+.flagSegment:last-child {
+    border-radius: 0 20px 20px 0;
+}
+
+.flagSegment:first-child {
+    border-radius: 20px 0 0 20px;
+}
+
+.flagSegment {
+    --amplitude: 0;
+    animation-timing-function: ease-in-out;
+    animation-name: wave;
+    animation-iteration-count: infinite;
+    transform: translateY(calc(var(--amplitude) * -1))
+}
+
+@keyframes wave {
+    0% {
+        transform: translateY(calc(var(--amplitude) * -1));
+    }
+
+    50% {
+        transform: translateY(calc(var(--amplitude) * 1));
+    }
+
+    1000% {
+        transform: translateY(calc(var(--amplitude) * -1));
+    }
+
+}
