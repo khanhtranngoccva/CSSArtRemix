@@ -3,6 +3,7 @@ html, body {
   height: 100%;
   margin: 0;
   position: fixed;
+  font-family: Arial, system-ui, sans-serif
 }
 
 #root {

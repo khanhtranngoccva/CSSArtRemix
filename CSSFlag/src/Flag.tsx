@@ -1,5 +1,5 @@
 import React, {CSSProperties} from "react";
-import classes from './styles.module.css'
+import classes from './Flag.module.css'
 
 function getVerticalGradient(matrix: string[][], colIndex: number) {
     if (matrix.length === 0) return "";
@@ -28,17 +28,26 @@ function Flag(props: {
     maxAmplitude: number,
     defaultColor?: string,
 }) {
-    const [matrixState, setMatrixState] = React.useState<{ matrix: string[][] }>({matrix: []});
+    const [matrixState, setMatrixState] = React.useState<{ matrix: string[][] }>(() => {
+        let saved: string[][];
+        try {
+            saved = JSON.parse(localStorage.getItem("flag") ?? "[]");
+        } catch (e) {
+            saved = [];
+        }
+        return {matrix: saved}
+    });
     const defaultColor = props.defaultColor ?? "#fff";
     const mutableMouseState = React.useRef<{ mouseDown?: boolean }>({mouseDown: false});
+    const flagRef = React.useRef<HTMLDivElement | null>(null);
+    const keyPrefix = React.useMemo(() => {
+        return crypto.randomUUID();
+    }, [props.columnCount]);
 
     React.useEffect(() => {
-        // Allows shrinking of the length.
-        matrixState.matrix.length = props.rowCount;
         for (let i = 0; i < props.rowCount; i++) {
             matrixState.matrix[i] ??= [];
             const row = matrixState.matrix[i];
-            row.length = props.columnCount;
             for (let i = 0; i < props.columnCount; i++) {
                 row[i] ??= defaultColor;
             }
@@ -52,7 +61,11 @@ function Flag(props: {
         }
 
         window.addEventListener("mouseup", mouseup);
-        return () => window.removeEventListener("mouseup", mouseup);
+        window.addEventListener("pointerup", mouseup);
+        return () => {
+            window.removeEventListener("mouseup", mouseup);
+            window.removeEventListener("pointerup", mouseup);
+        }
     }, []);
 
     // Friendly height and width.
@@ -68,21 +81,29 @@ function Flag(props: {
                 matrixState.matrix[rowIndex][index] = props.currentColor;
             }
         }
+        localStorage.setItem("flag", JSON.stringify(matrixState.matrix))
         setMatrixState(prev => ({...prev}))
     }
-
-    return <div className={classes.flag}>
+    console.log(matrixState);
+    return <div className={classes.flag} ref={flagRef}>
         {Array.from({length: props.columnCount}, (_, index) => {
+            const stagger = `${props.staggerDelay * index - props.columnCount * props.staggerDelay}s`;
+            const amplitude = `${props.maxAmplitude / (props.columnCount - 1) * index}px`;
             return <div className={classes.flagSegment} style={{
-                background: getVerticalGradient(matrixState.matrix, index),
+                background: getVerticalGradient(matrixState.matrix.slice(0, props.rowCount), index),
                 height: friendlyHeight + "px",
                 width: friendlyColumnWidth + "px",
-                animationDelay: `${props.staggerDelay * -index}s`,
+                animationDelay: stagger,
                 animationDuration: `${props.duration}s`,
-                "--amplitude": `${props.maxAmplitude / (props.columnCount - 1) * index}px`
-            } as CSSProperties} key={index} onMouseMove={(e) => {
+                "--amplitude": amplitude,
+            } as CSSProperties} key={`${keyPrefix}_${index}`} onMouseMove={(e) => {
                 handler(e, index);
             }} onMouseDown={(e) => {
+                mutableMouseState.current.mouseDown = true
+                handler(e, index);
+            }} onPointerMove={(e) => {
+                handler(e, index);
+            }} onPointerDown={(e) => {
                 mutableMouseState.current.mouseDown = true
                 handler(e, index);
             }}/>
