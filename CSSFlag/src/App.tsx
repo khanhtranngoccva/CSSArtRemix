@@ -11,7 +11,7 @@ export default function App() {
     const [height, setHeight] = React.useState(540);
     const [duration, setDuration] = React.useState(1);
     const [columns, setColumns] = React.useState(12);
-    const [rows, setRows] = React.useState(7);
+    const [rows, setRows] = React.useState(6);
     const [stagger, setStagger] = React.useState(0.1);
 
 

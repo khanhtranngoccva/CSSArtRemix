@@ -1,4 +1,4 @@
-import React from "react";
+import React, {CSSProperties} from "react";
 import classes from './RangeInput.module.css'
 
 interface RangeInputProps extends React.ComponentPropsWithRef<"input"> {
@@ -38,7 +38,7 @@ const RangeInput = React.forwardRef<HTMLInputElement, RangeInputProps>
             <input {...props} style={{
                 "--rainbow": generateGradient(),
                 ...props.style,
-            }} value={props.value} ref={ref} id={id} type={"range"} onChange={e => {
+            } as CSSProperties} value={props.value} ref={ref} id={id} type={"range"} onChange={e => {
                 setCurrentValue(+e.currentTarget.value);
                 props.onChange?.(e);
             }} className={`${classes.input} ${props.inputClassName || ""}`}/>

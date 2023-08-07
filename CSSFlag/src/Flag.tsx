@@ -16,6 +16,8 @@ function getVerticalGradient(matrix: string[][], colIndex: number) {
     return `linear-gradient(180deg, ${result.join(", ")})`
 }
 
+const DEFAULT_COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
+
 function Flag(props: {
     editable?: boolean,
     rowCount: number,
@@ -31,7 +33,7 @@ function Flag(props: {
     const [matrixState, setMatrixState] = React.useState<{ matrix: string[][] }>(() => {
         let saved: string[][];
         try {
-            saved = JSON.parse(localStorage.getItem("flag") ?? "[]");
+            saved = JSON.parse(localStorage.getItem("flag") ?? JSON.stringify(DEFAULT_COLORS.map(color => Array.from({length: 20}, () => color))));
         } catch (e) {
             saved = [];
         }
@@ -84,6 +86,7 @@ function Flag(props: {
         localStorage.setItem("flag", JSON.stringify(matrixState.matrix))
         setMatrixState(prev => ({...prev}))
     }
+
     console.log(matrixState);
     return <div className={classes.flag} ref={flagRef}>
         {Array.from({length: props.columnCount}, (_, index) => {

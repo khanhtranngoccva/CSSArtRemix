@@ -14,7 +14,7 @@ export default function ColorPicker(props: {
             paletteState.palette[i] = props.defaultColor ?? "#ffffff"
         }
         if (selected < 0) setSelected(0);
-        if (selected >= props.paletteSize) setSelected(paletteState - 1);
+        if (selected >= props.paletteSize) setSelected(selected - 1);
         setPaletteState(prev => ({...prev}))
     }, [props.paletteSize]);
 
@@ -25,8 +25,7 @@ export default function ColorPicker(props: {
                 props.onChange?.(color);
                 setSelected(index);
                 setPaletteState(prev => ({...prev}))
-            }}>
-            </ColorInput>
+            }}></ColorInput>
         })}
     </div>
 }
